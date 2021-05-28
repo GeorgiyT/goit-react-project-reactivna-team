@@ -6,8 +6,24 @@ const routes = [
     exact: true,
     restricted: false,
     private: false,
-    component: lazy(() => import("./pages/HomePage")),
+    component: lazy(() => import("./pages/HomePage/HomePage")),
     title: "HOME"
+  },
+  {
+    path: "/login",
+    exact: true,
+    restricted: false,
+    private: false,
+    component: lazy(() => import("./pages/HomePage/HomePage")),
+    title: "LOGIN"
+  },
+  {
+    path: "/register",
+    exact: true,
+    restricted: false,
+    private: false,
+    component: lazy(() => import("./pages/HomePage/HomePage")),
+    title: "REGISTRATION"
   }
 ];
 
