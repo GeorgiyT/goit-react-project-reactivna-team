@@ -1,5 +1,6 @@
 import { Suspense } from "react";
 import { Route, Switch } from "react-router";
+
 import routes from "./routes";
 import styles from "./styles/app.module.css";
 
@@ -11,6 +12,7 @@ function App() {
           {routes.map(route => (
             <Route {...route} key={route.path} />
           ))}
+          {/* <AuthForm /> */}
         </Switch>
       </Suspense>
     </div>
