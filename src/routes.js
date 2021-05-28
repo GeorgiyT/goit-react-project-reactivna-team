@@ -12,17 +12,17 @@ const routes = [
   {
     path: "/login",
     exact: true,
-    restricted: false,
+    restricted: true,
     private: false,
-    component: lazy(() => import("./pages/HomePage/HomePage")),
+    component: lazy(() => import("./pages/AuthPage/AuthPage" /*webpackChankName:'AuthPage'*/)),
     title: "LOGIN"
   },
   {
-    path: "/register",
+    path: "/registration",
     exact: true,
-    restricted: false,
+    restricted: true,
     private: false,
-    component: lazy(() => import("./pages/HomePage/HomePage")),
+    component: lazy(() => import("./pages/AuthPage/AuthPage" /*webpackChankName:'AuthPage'*/)),
     title: "REGISTRATION"
   }
 ];
