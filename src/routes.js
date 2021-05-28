@@ -6,7 +6,7 @@ const routes = [
     exact: true,
     restricted: false,
     private: false,
-    component: lazy(() => import("./pages/HomePage/HomePage")),
+    component: lazy(() => import("./pages/mainPages/MainPages")),
     title: "HOME"
   },
   {
