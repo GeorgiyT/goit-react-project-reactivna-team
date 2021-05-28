@@ -1,4 +1,5 @@
 import { lazy } from "react";
+import DiaryProducts from "./components/Diary/DiaryProducts";
 
 const routes = [
   {
@@ -24,6 +25,15 @@ const routes = [
     private: false,
     component: lazy(() => import("./pages/HomePage/HomePage")),
     title: "REGISTRATION"
+  },
+  {
+    path: '/daily-rate',
+    label: 'Diary',
+    exact: true,
+    component: lazy(() => import("./components/Diary/DiaryProducts")),
+    private: true,
+    restricted: false,
+    
   }
 ];
 
