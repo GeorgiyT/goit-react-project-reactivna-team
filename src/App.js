@@ -12,7 +12,6 @@ function App() {
           {routes.map(route => (
             <Route {...route} key={route.path} />
           ))}
-          {/* <AuthForm /> */}
         </Switch>
       </Suspense>
     </div>
