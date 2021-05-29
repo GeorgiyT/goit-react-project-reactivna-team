@@ -1,6 +1,8 @@
 import { Suspense } from "react";
 import { Route, Switch } from "react-router";
 
+import Header from "./components/Header/Header";
+
 import routes from "./routes";
 import styles from "./styles/app.module.css";
 
@@ -15,6 +17,7 @@ function App() {
           {/* <AuthForm /> */}
         </Switch>
       </Suspense>
+      <Header/>
     </div>
   );
 }
