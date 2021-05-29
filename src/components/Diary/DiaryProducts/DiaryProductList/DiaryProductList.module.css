@@ -1,0 +1,47 @@
+.product{
+    width: 300px;
+    font-family: Verdana;
+font-style: normal;
+font-weight: bold;
+font-size: 14px;
+line-height: 17px;
+letter-spacing: 0.04em;
+color: #000;
+    border: none;
+    border-bottom: 1px solid #e0e0e0;
+   padding: 20px;
+   margin-right: 30px;
+}
+.gram{
+    width: 120px;
+    font-family: Verdana;
+font-style: normal;
+font-weight: bold;
+font-size: 14px;
+line-height: 17px;
+text-align: right;
+letter-spacing: 0.04em;
+color: #000;
+ border: none;
+    border-bottom: 1px solid #e0e0e0;
+   padding: 20px;
+   padding-right: 0px;
+
+}
+.icon {
+    width:  14px;
+    height:  14px;
+    fill: #fff;
+}
+.but{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #FC842D;
+    box-shadow: 0 4px 10px 0 rgb(252 132 45 / 50%);
+    border: 1px solid #fc842d;
+    margin-left: 75px;
+}
+.cont{
+    margin-top: 40px;
+}
