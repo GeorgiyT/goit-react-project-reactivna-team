@@ -1,5 +1,4 @@
 import { lazy } from "react";
-import DiaryProducts from "./components/Diary/DiaryProducts";
 
 const routes = [
   {
@@ -7,33 +6,40 @@ const routes = [
     exact: true,
     restricted: false,
     private: false,
-    component: lazy(() => import("./pages/HomePage/HomePage")),
+    component: lazy(() => import("./pages/mainPages/MainPages")),
     title: "HOME"
   },
   {
     path: "/login",
     exact: true,
-    restricted: false,
+    restricted: true,
     private: false,
-    component: lazy(() => import("./pages/HomePage/HomePage")),
+    component: lazy(() => import("./pages/AuthPage/AuthPage" /*webpackChankName:'AuthPage'*/)),
     title: "LOGIN"
   },
   {
-    path: "/register",
+    path: "/registration",
     exact: true,
-    restricted: false,
+    restricted: true,
     private: false,
-    component: lazy(() => import("./pages/HomePage/HomePage")),
+    component: lazy(() => import("./pages/AuthPage/AuthPage" /*webpackChankName:'AuthPage'*/)),
     title: "REGISTRATION"
   },
   {
-    path: '/daily-rate',
-    label: 'Diary',
+    path: "/daily-rate",
+    label: "Diary",
     exact: true,
-    component: lazy(() => import("./components/Diary/DiaryProducts")),
+    component: lazy(() => import("./pages/Diary/DiaryPage")),
     private: true,
-    restricted: false,
-    
+    restricted: false
+  },
+  {
+    path: "/calculator",
+    label: "Calculator",
+    exact: true,
+    component: lazy(() => import("./pages/Calculator/CalculatorPage")),
+    private: true,
+    restricted: false
   }
 ];
 
