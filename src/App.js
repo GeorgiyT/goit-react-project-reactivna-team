@@ -1,5 +1,6 @@
 import { Suspense } from "react";
 import { Route, Switch } from "react-router";
+import DailyInfo from "./components/DailyInfo/DailyInfo";
 
 import Header from "./components/Header/Header";
 
@@ -11,11 +12,11 @@ function App() {
     <div className={styles.container}>
       <Suspense fallback="Loading...">
         <Switch>
-          {routes.map(route => (
+          {routes.map((route) => (
             <Route {...route} key={route.path} />
           ))}
-          {/* <AuthForm /> */}
         </Switch>
+        <DailyInfo />
       </Suspense>
       <Header/>
     </div>
