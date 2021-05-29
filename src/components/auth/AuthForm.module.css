@@ -48,13 +48,13 @@
   color: white;
 }
 .auth_link {
-  background: #ffffff;
+  /* background: #ffffff;
   border: 2px solid #fc842d;
   box-sizing: border-box;
   border-radius: 30px;
   width: 176px;
   height: 44px;
-  display: flex;
+  display: flex; */
 
   align-items: center;
   justify-content: center;
