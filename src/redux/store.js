@@ -5,7 +5,8 @@ import persistReducer from "redux-persist/es/persistReducer";
 import persistStore from "redux-persist/es/persistStore";
 import storage from "redux-persist/lib/storage";
 
-import auth from "./auth/authReducer";
+import authReducer from "./auth/authReducer";
+import userReducers from "./user/userReducer";
 
 const middleware = [
   ...getDefaultMiddleware({
@@ -19,12 +20,13 @@ const middleware = [
 const authPersitConfig = {
   key: "authToken",
   storage,
-  whitelist: ["token"]
+  whitelist: ["tokens"]
 };
 
 const store = configureStore({
   reducer: {
-    auth: persistReducer(authPersitConfig, auth)
+    auth: persistReducer(authPersitConfig, authReducer),
+    user: userReducers
   },
   middleware
 });
