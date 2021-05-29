@@ -6,7 +6,7 @@ const routes = [
     exact: true,
     restricted: false,
     private: false,
-    component: lazy(() => import("./pages/HomePage/HomePage")),
+    component: lazy(() => import("./pages/mainPages/MainPages")),
     title: "HOME"
   },
   {
@@ -24,6 +24,22 @@ const routes = [
     private: false,
     component: lazy(() => import("./pages/AuthPage/AuthPage" /*webpackChankName:'AuthPage'*/)),
     title: "REGISTRATION"
+  },
+  {
+    path: "/daily-rate",
+    label: "Diary",
+    exact: true,
+    component: lazy(() => import("./pages/Diary/DiaryPage")),
+    private: true,
+    restricted: false
+  },
+  {
+    path: "/calculator",
+    label: "Calculator",
+    exact: true,
+    component: lazy(() => import("./pages/Calculator/CalculatorPage")),
+    private: true,
+    restricted: false
   }
 ];
 
