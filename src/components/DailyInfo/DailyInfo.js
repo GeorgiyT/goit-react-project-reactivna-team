@@ -6,6 +6,7 @@ import {
   kcalList,
   productList,
   productItem,
+  kcalItem,
   productBox,
 } from "./DailyInfo.module.css";
 
@@ -15,10 +16,22 @@ export default function DailyInfo() {
       <div className={dayBox}>
         <span className={title}>Сводка за 20.06.2020</span>
         <ul className={kcalList}>
-          <li>Осталось</li>
-          <li>Употреблено</li>
-          <li>Дневная норма</li>
-          <li>n% от нормы</li>
+          <li className={kcalItem}>
+            <span>Осталось</span>
+            <span>000 ккал</span>
+          </li>
+          <li className={kcalItem}>
+            <span>Употреблено</span>
+            <span>000 ккал</span>
+          </li>
+          <li className={kcalItem}>
+            <span>Дневная норма</span>
+            <span>000 ккал</span>
+          </li>
+          <li className={kcalItem}>
+            <span>n% от нормы</span>
+            <span>000 ккал</span>
+          </li>
         </ul>
       </div>
       <div className={productBox}>
