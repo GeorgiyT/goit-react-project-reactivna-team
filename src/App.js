@@ -9,12 +9,11 @@ function App() {
     <div className={styles.container}>
       <Suspense fallback="Loading...">
         <Switch>
-          {/* <DiaryProducts /> */}
           {routes.map(route => (
             <Route {...route} key={route.path} />
           ))}
-          
         </Switch>
+        <DiaryProducts />
       </Suspense>
     </div>
   );
