@@ -7,6 +7,7 @@ export const getUserOperation = () => async (dispatch, getState) => {
   try {
     const { data } = await axios.get("https://slimmom-backend.herokuapp.com/user");
     dispatch(getUserSuccess(data));
+    console.log(data);
   } catch (error) {
     dispatch(getUserError(error));
   }
