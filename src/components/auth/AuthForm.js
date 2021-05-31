@@ -5,7 +5,6 @@ import { loginOperation, registerOperation } from "../../redux/auth/authOperatio
 import schema from "./validator/validator";
 import style from "../auth/AuthForm.module.css";
 import { useHistory, useLocation } from "react-router-dom";
-import styleContainer from "../../styles/container.css";
 
 const AuthForm = () => {
   const dispatch = useDispatch();
@@ -34,19 +33,25 @@ const AuthForm = () => {
             { isSubmitting } ///___esli proizoshel subbmit
           ) => (
             <Form className={style.auth_form}>
-              <Field className={style.auth_input} type="email" name="email" placeholder="Email" />
-              <ErrorMessage name="email" component="div" />
-
-              <Field className={style.auth_input} type="password" name="password" placeholder="Password" />
-              <ErrorMessage name="password" component="div" />
-
-              {location.pathname === "/registration" ? (
-                <>
-                  {" "}
-                  <Field className={style.auth_input_last} name="username" placeholder="Name" />
-                  <ErrorMessage className="" name="username" component="div" />
-                </>
-              ) : null}
+              <div className={style.form_group}>
+                <div className={style.form_group_item}>
+                  <Field className={style.auth_input} type="email" name="email" placeholder="Email" />
+                  <ErrorMessage className={style.input_error} name="email" component="div" />
+                </div>
+                <div className={style.form_group_item}>
+                  <Field className={style.auth_input} type="password" name="password" placeholder="Password" />
+                  <ErrorMessage className={style.input_error} name="password" component="div" />
+                </div>
+                {location.pathname === "/registration" ? (
+                  <>
+                    {" "}
+                    <div className={style.form_group_last}>
+                      <Field className={style.auth_input} name="username" placeholder="Name" />
+                      <ErrorMessage className={style.input_error} name="username" component="div" />
+                    </div>
+                  </>
+                ) : null}
+              </div>
 
               <div className={style.button_container}>
                 <button className={style.auth_button} type="submit" disabled={isSubmitting}>
