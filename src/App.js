@@ -9,9 +9,7 @@ function App() {
     <div className={styles.container}>
       <Suspense fallback="Loading...">
         <Switch>
-          {routes.map(route => (
-            <Route {...route} key={route.path} />
-          ))}
+          {routes.map(route => route.private ? <PrivateRoute {}> : <PublicRoute {}>
         </Switch>
       </Suspense>
     </div>
