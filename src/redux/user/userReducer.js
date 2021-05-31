@@ -1,14 +1,16 @@
 import { combineReducers, createReducer } from "@reduxjs/toolkit";
 import { setUserLoading, loginSuccess, logOutSuccess } from "../auth/authActions";
-import { resetError, setError } from "./userActions";
+import { getUserError, getUserSuccess, resetError, setError } from "./userActions";
 
-const userReducer = createReducer(
+const userDataReducer = createReducer(
   {},
+
   {
     [loginSuccess]: (_, { payload }) => ({
       ...payload.user
     }),
-    [logOutSuccess]: () => ({})
+    [logOutSuccess]: () => ({}),
+    [getUserSuccess]: (_, { payload }) => payload
   }
 );
 const userLoaderReducer = createReducer(false, {
@@ -17,11 +19,12 @@ const userLoaderReducer = createReducer(false, {
 
 const userErrorReducer = createReducer("", {
   [setError]: (_, { payload }) => payload,
-  [resetError]: () => ""
+  [resetError]: () => "",
+  [getUserError]: (_, { payload }) => payload
 });
 
 const userReducers = combineReducers({
-  data: userReducer,
+  data: userDataReducer,
   isLoadind: userLoaderReducer,
   error: userErrorReducer
 });
