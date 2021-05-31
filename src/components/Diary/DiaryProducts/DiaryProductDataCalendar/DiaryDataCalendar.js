@@ -23,11 +23,12 @@ class DiaryDataCalendar extends Component {
   }
 
   handleTap = (someDate, setSomeDate) => {
-    setSomeDate(someDate);
+    // setSomeDate(someDate);
+    // console.log(this.props);
 
     const result = someDate ?someDate.format('YYYY-MM-DD') : 0;
     this.setState({ date: result });
-    this.props.setDate(result);
+    this.props.setData(result);
   };
     render() {
         return (
@@ -42,7 +43,7 @@ class DiaryDataCalendar extends Component {
     }
 }
 const mapDispatchToProps = {
-  setData,
+ setData,
   toFetchProducts: productOperation.fetchProduct
 };
 

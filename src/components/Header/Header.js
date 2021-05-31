@@ -1,23 +1,13 @@
-import React from 'react'
-import s from"./Header.module.css"
-import logo from "../../images/header/logo.png"
-import LoginMenu from './loginMenu/LoginMenu'
-import UserMenu from './UserMenu/UserMenu'
+import React from "react";
+import UserHeader from "./UserHeader/UserHeader";
+import LoginHeader from "./LoginHeader/LoginHeader";
+import { connect } from "react-redux";
+import { isAuthenticatedSelector } from "../../redux/auth/authSelectors";
 
-export default function Header() {
-    return (
-      <header>
-        <div className={s.header}>
-          <a href="/" className={s.logo}>
-            <img src={logo} alt="" />
-            <span className={s.logo__text}>
-              Slim<span className={s.logo__text__color}>Mom</span>
-            </span>
-          </a>
-          <div className={s.decoration}></div>
-          {false ? <LoginMenu /> : ""}
-        </div>
-        {true ? <UserMenu /> : ""}
-      </header>
-    );
-}
+const Header = ({ isAuth }) => {
+  return <>{isAuth ? <UserHeader /> : <LoginHeader />}</>;
+};
+const mapStateToProps = state => ({
+  isAuth: isAuthenticatedSelector(state)
+});
+export default connect(mapStateToProps)(Header);
