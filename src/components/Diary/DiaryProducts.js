@@ -30,15 +30,14 @@ const DiaryProducts =({products})=> {
         );
     
 }
-// const mapStateToProps = state => ({
-
-//     products:produstSelector.getProducts(state),
-//   date: state.date,
-// });
+const mapStateToProps = state => ({
+    products:produstSelector.getProducts(state),
+  date: state.date,
+});
 const mapDispatchToProps = dispatch => {
   return {
       toFetchProducts: data=> dispatch(productOperation.fetchProduct(data))
   };
 };
 
-export default connect( mapDispatchToProps)(DiaryProducts);
+export default connect( mapStateToProps ,mapDispatchToProps)(DiaryProducts);
