@@ -1,11 +1,13 @@
 import React from "react";
-import LoginHeader from "./loginHeader/LoginHeader";
 import UserHeader from "./UserHeader/UserHeader";
+import LoginHeader from "./LoginHeader/LoginHeader";
+import { connect } from "react-redux";
+import { isAuthenticatedSelector } from "../../redux/auth/authSelectors";
 
-export default function Header() {
-  return (
-    <header>
-      {true ? <LoginHeader /> : <UserHeader />}
-    </header>
-  );
-}
+const Header = ({ isAuth }) => {
+  return <>{isAuth ? <UserHeader /> : <LoginHeader />}</>;
+};
+const mapStateToProps = (state) => ({
+  isAuth: isAuthenticatedSelector(state),
+});
+export default connect(mapStateToProps)(Header);
