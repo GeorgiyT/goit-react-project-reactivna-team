@@ -10,22 +10,23 @@ const DiaryProdustListItem = ({ title, weidht, kcal,dayId }) => {
               <p>{title}</p>
                 <p>{weidht}</p>
                 <p>{kcal}</p>
-                <button type="button" onClick={() => deleteProduct(dayId)}>
-                </button>           
+                {/* <button type="button" onClick={() => deleteProduct(dayId)}>
+                </button>            */}
         </li>
    </>
  );
 
 }
-const mapStateToProps = state => ({
-        dayId: state.products.id
-})
+// const mapStateToProps = state => ({
+//         dayId: state.products.id
+// })
 
-const mapDispatchToProps = (dispatch) => {
-        return {
-                deleteProduct: dayId => {
-                        return dispatch(productOperation.deleteProduct(dayId))
-                },
-        };
-};
-export default connect(mapStateToProps, mapDispatchToProps)(DiaryProdustListItem);
+// const mapDispatchToProps = (dispatch) => {
+//         return {
+//                 deleteProduct: dayId => {
+//                         return dispatch(productOperation.deleteProduct(dayId))
+//                 },
+//         };
+// };
+// export default connect(mapStateToProps, mapDispatchToProps)(DiaryProdustListItem);
+export default DiaryProdustListItem
