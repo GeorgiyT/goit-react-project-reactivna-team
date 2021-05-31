@@ -1,7 +1,10 @@
 import React from "react";
 import { ErrorMessage, Field, Form, Formik, useFormik } from "formik";
 import { useDispatch } from "react-redux";
-import { loginOperation, registerOperation } from "../../redux/auth/authOperations";
+import {
+  loginOperation,
+  registerOperation,
+} from "../../redux/auth/authOperations";
 import schema from "./validator/validator";
 import style from "../auth/AuthForm.module.css";
 import { useHistory, useLocation } from "react-router-dom";
@@ -23,26 +26,48 @@ const AuthForm = () => {
         <Formik
           initialValues={{ email: "", password: "", username: "" }}
           validationSchema={schema}
-          onSubmit={values => {
+          onSubmit={(values) => {
             console.log(values);
             location.pathname === "/registration"
               ? dispatch(registerOperation(values, history))
-              : dispatch(loginOperation({ email: values.email, password: values.password }));
+              : dispatch(
+                  loginOperation({
+                    email: values.email,
+                    password: values.password,
+                  })
+                );
           }}
         >
           {(
             { isSubmitting } ///___esli proizoshel subbmit
           ) => (
             <Form>
-              <Field className="emailInput" type="email" name="email" placeholder="Write your email" />
+              <Field
+                className="emailInput"
+                type="email"
+                name="email"
+                placeholder="Write your email"
+              />
               <ErrorMessage name="email" component="div" />
 
-              <Field className="passwordInput" type="password" name="password" placeholder="Write your password" />
+              <Field
+                className="passwordInput"
+                type="password"
+                name="password"
+                placeholder="Write your password"
+              />
               <ErrorMessage name="password" component="div" />
-              <Field className="" type="username" name="username" placeholder="Write your name" />
+              <Field
+                className=""
+                type="username"
+                name="username"
+                placeholder="Write your name"
+              />
               <ErrorMessage name="email" component="div" />
               <button className="btnSign" type="submit" disabled={isSubmitting}>
-                {location.pathname === "/registration" ? "зарегистрироваться" : "Bход"}
+                {location.pathname === "/registration"
+                  ? "зарегистрироваться"
+                  : "Bход"}
               </button>
             </Form>
           )}
