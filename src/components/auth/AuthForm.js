@@ -5,6 +5,7 @@ import { loginOperation, registerOperation } from "../../redux/auth/authOperatio
 import schema from "./validator/validator";
 import style from "../auth/AuthForm.module.css";
 import { useHistory, useLocation } from "react-router-dom";
+import styleContainer from "../../styles/container.css";
 
 const AuthForm = () => {
   const dispatch = useDispatch();
@@ -12,7 +13,7 @@ const AuthForm = () => {
   const history = useHistory();
 
   return (
-    <>
+    <div className="container">
       <div className={style.auth_container}>
         {location.pathname === "/registration" ? (
           <h1 className={style.auth_title}> Регистрация</h1>
@@ -39,15 +40,14 @@ const AuthForm = () => {
               <Field className={style.auth_input} type="password" name="password" placeholder="Password" />
               <ErrorMessage name="password" component="div" />
 
-                          
-                           {location.pathname === "/registration" ? 
-     <>  <Field className={style.auth_input_last} name="username" placeholder="Name" />
-              <ErrorMessage className="" name="username" component="div" /></>
-     : 
-   null
-        }
-              
-  
+              {location.pathname === "/registration" ? (
+                <>
+                  {" "}
+                  <Field className={style.auth_input_last} name="username" placeholder="Name" />
+                  <ErrorMessage className="" name="username" component="div" />
+                </>
+              ) : null}
+
               <div className={style.button_container}>
                 <button className={style.auth_button} type="submit" disabled={isSubmitting}>
                   {location.pathname === "/registration" ? "зарегистрироваться" : "Bход"}
@@ -57,7 +57,7 @@ const AuthForm = () => {
           )}
         </Formik>
       </div>
-    </>
+    </div>
   );
 };
 

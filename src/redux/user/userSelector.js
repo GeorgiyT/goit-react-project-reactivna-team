@@ -1,0 +1,1 @@
+export  const getUserNameSelector = state => state.user.data.username;
