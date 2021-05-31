@@ -7,7 +7,7 @@ import { BrowserRouter } from "react-router-dom";
 import "../node_modules/modern-normalize/modern-normalize.css";
 import "./styles/index.css";
 import { PersistGate } from "redux-persist/integration/react";
-
+import "./styles/container.css";
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store.store}>
