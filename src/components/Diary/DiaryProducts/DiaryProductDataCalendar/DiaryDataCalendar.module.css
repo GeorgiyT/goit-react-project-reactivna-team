@@ -1,0 +1,24 @@
+.div{
+    display: flex;
+}
+.CalendarContainer {
+  display: flex;
+}
+.images{
+    width: 18px;
+    height: 20px;
+    margin-left: 20px;
+    fill: #9B9FAA;
+}
+.calendar {
+  color: #212121;;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.22;
+  font-family: Verdana, sans-serif;
+  border: none;
+  width: 138px;
+  height: 20px;
+  padding: 0;
+  margin-bottom: 30px;
+}
