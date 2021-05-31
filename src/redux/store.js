@@ -6,6 +6,7 @@ import persistStore from "redux-persist/es/persistStore";
 import storage from "redux-persist/lib/storage";
 
 import authReducer from "./auth/authReducer";
+import itemsReducer from "./dailyRate/dailyRateReducer";
 import userReducers from "./user/userReducer";
 
 const middleware = [
@@ -26,7 +27,8 @@ const authPersitConfig = {
 const store = configureStore({
   reducer: {
     auth: persistReducer(authPersitConfig, authReducer),
-    user: userReducers
+    user: userReducers,
+     dailyRate: itemsReducer,
   },
   middleware
 });

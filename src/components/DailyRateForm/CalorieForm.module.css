@@ -37,7 +37,6 @@
   color: rgba(155, 159, 170, 1);
 }
 
-
 .error {
   width: 300px;
   position: absolute;
@@ -45,6 +44,11 @@
   left: 0;
   color: #e11616;
   font-size: 13px;
+}
+
+.error_input {
+  background-color: #e1161613;
+  border-bottom: 1px solid #e11616;
 }
 
 .error_radio {
@@ -109,7 +113,7 @@ input[type="radio"] + label:before {
   height: 20px;
   margin-right: 14px;
   position: absolute;
-  top: -3px;
+  top: -2px;
   left: 0;
   border: 1px solid rgba(224, 224, 224, 1);
   background-color: #fff;
@@ -139,7 +143,7 @@ input[type="radio"]:checked + label:after {
   display: block;
   position: absolute;
   bottom: 17%;
-  left: 13%;
+  left: 14%;
 
   width: 10px;
   height: 10px;
