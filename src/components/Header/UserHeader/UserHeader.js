@@ -2,11 +2,12 @@ import React from "react";
 import s from "./UserHeader.module.css";
 import logo from "../../../images/header/logo.png";
 import { NavLink } from "react-router-dom";
+import { connect } from "react-redux";
+import * as authOperations from "../../../redux/auth/authOperations";
+import { getUserNameSelector } from "../../../redux/user/userSelector";
 
-export default function UserHeader() {
-  const hendleClick = () => {
-    console.log("123");
-  };
+const UserHeader = ({ userNic, logOutFunc }) => {
+  console.log(userNic);
   return (
     <div className={s.container}>
       <div className={s.header}>
@@ -37,13 +38,19 @@ export default function UserHeader() {
           </li>
         </ul>
       </div>
-
       <div className={s.menu}>
-        <p>Nic</p>
+        <p>{userNic}</p>
         <span></span>
-        <button onClick={hendleClick}>Выйти</button>
+        <button onClick={logOutFunc}>Выйти</button>
       </div>
       <div className={s.burger}></div>
     </div>
   );
-}
+};
+const mapStateToProps = (state) => ({
+  userNic: getUserNameSelector(state),
+});
+const mapDispatchToProps = {
+  logOutFunc: authOperations.logOutOperation,
+};
+export default connect(mapStateToProps, mapDispatchToProps)(UserHeader);
