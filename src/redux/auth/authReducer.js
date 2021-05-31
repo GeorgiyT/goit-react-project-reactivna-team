@@ -1,5 +1,15 @@
 import { combineReducers, createReducer } from "@reduxjs/toolkit";
-import { loginError, loginRequest, loginSuccess, logOut, registerError, registerRequest, registerSuccess } from "./authActions";
+import {
+  loginError,
+  loginRequest,
+  loginSuccess,
+  logOutError,
+  logOutRequest,
+  logOutSuccess,
+  registerError,
+  registerRequest,
+  registerSuccess
+} from "./authActions";
 
 const tokenReducer = createReducer(
   {},
@@ -10,7 +20,7 @@ const tokenReducer = createReducer(
       refreshToken: payload.refreshToken,
       sid: payload.sid
     }),
-    [logOut]: () => ({})
+    [logOutSuccess]: () => ({})
   }
 );
 
@@ -21,13 +31,15 @@ const loaderReducer = createReducer(false, {
   [loginRequest]: state => !state,
   [loginSuccess]: state => !state,
   [loginError]: state => !state,
-  [logOut]: () => false
+  [logOutSuccess]: () => false,
+  [logOutRequest]: () => true,
+  [logOutError]: () => false
 });
 
 const errorReducer = createReducer("", {
   [registerError]: (_, { payload }) => payload,
   [loginError]: (_, { payload }) => payload,
-  [logOut]: () => ""
+  [logOutError]: (_, { payload }) => payload
 });
 
 const authReducer = combineReducers({

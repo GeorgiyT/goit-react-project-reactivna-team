@@ -8,5 +8,7 @@ export const loginRequest = createAction("auth/loginRequest");
 export const loginSuccess = createAction("auth/loginSuccess");
 export const loginError = createAction("auth/loginError");
 
-export const logOut = createAction("auth/logOut");
+export const logOutRequest = createAction("auth/logOutRequest");
+export const logOutSuccess = createAction("auth/logOutSuccess");
+export const logOutError = createAction("auth/logOutError");
 export const setUserLoading = createAction("auth/setUserLoading");

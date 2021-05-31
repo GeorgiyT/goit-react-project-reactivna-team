@@ -1,5 +1,5 @@
 import { combineReducers, createReducer } from "@reduxjs/toolkit";
-import { setUserLoading, loginSuccess, logOut } from "../auth/authActions";
+import { setUserLoading, loginSuccess, logOutSuccess } from "../auth/authActions";
 import { resetError, setError } from "./userActions";
 
 const userReducer = createReducer(
@@ -8,7 +8,7 @@ const userReducer = createReducer(
     [loginSuccess]: (_, { payload }) => ({
       ...payload.user
     }),
-    [logOut]: () => ({})
+    [logOutSuccess]: () => ({})
   }
 );
 const userLoaderReducer = createReducer(false, {

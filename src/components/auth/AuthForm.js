@@ -38,8 +38,16 @@ const AuthForm = () => {
 
               <Field className={style.auth_input} type="password" name="password" placeholder="Password" />
               <ErrorMessage name="password" component="div" />
-              <Field className={style.auth_input_last} name="username" placeholder="Name" />
-              <ErrorMessage name="email" component="div" />
+
+                          
+                           {location.pathname === "/registration" ? 
+     <>  <Field className={style.auth_input_last} name="username" placeholder="Name" />
+              <ErrorMessage className="" name="username" component="div" /></>
+     : 
+   null
+        }
+              
+  
               <div className={style.button_container}>
                 <button className={style.auth_button} type="submit" disabled={isSubmitting}>
                   {location.pathname === "/registration" ? "зарегистрироваться" : "Bход"}
