@@ -7,7 +7,7 @@ export default function LoginHeader() {
   return (
     <div className={s.header}>
       <a href="/" className={s.logo}>
-        <img src={logo}/>
+        <img src={logo} />
         <span className={s.logo__text}>
           Slim<span className={s.logo__text__color}>Mom</span>
         </span>
@@ -23,7 +23,7 @@ export default function LoginHeader() {
           <NavLink
             activeClassName={s.active}
             className={s.default}
-            to="/register"
+            to="/registration"
           >
             РЕГИСТРАЦИЯ
           </NavLink>
