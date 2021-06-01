@@ -16,14 +16,17 @@
   color: #fc842d;
   margin-bottom: 60px;
 }
-.auth_form {
-  display: flex;
-  flex-direction: column;
+.form_group {
+  margin-bottom: 60px;
 }
 .auth_form {
   display: flex;
   flex-direction: column;
 }
+.form_group_item {
+  margin-bottom: 75px;
+}
+
 .button_container {
   display: flex;
   margin: 0 auto;
@@ -40,6 +43,7 @@
   height: 44px;
 
   display: block;
+  margin: 0 auto;
   font-weight: bold;
   font-size: 14px;
   line-height: 17px;
@@ -48,13 +52,13 @@
   color: white;
 }
 .auth_link {
-  background: #ffffff;
+  /* background: #ffffff;
   border: 2px solid #fc842d;
   box-sizing: border-box;
   border-radius: 30px;
   width: 176px;
   height: 44px;
-  display: flex;
+  display: flex; */
 
   align-items: center;
   justify-content: center;
@@ -72,24 +76,24 @@
   width: 100%;
   border: none;
   border-bottom: 1px solid #e0e0e0;
-}
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
+  align-items: flex-start;
 
-.auth_label {
+  color: #9b9faa;
+}
+.input_error {
+  color: #9b9faa;
+}
+/* .auth_label {
   display: flex;
   flex-direction: column;
   align-content: flex-start;
   align-items: flex-start;
   margin-bottom: 75px;
   color: #9b9faa;
-}
-.auth_label_last {
-  display: flex;
-  flex-direction: column;
-  align-content: flex-start;
-  align-items: flex-start;
-  margin-bottom: 60px;
-  color: #9b9faa;
-}
+} */
 
 @media screen and (min-width: 768px) {
   .auth_container {
@@ -101,17 +105,32 @@
   .button_container {
     display: flex;
     flex-direction: row;
-    align-content: center;
+
     align-items: center;
-    justify-content: space-between;
+
     margin: 0;
+  }
+  .auth_button {
+    background: #fc842d;
+    box-shadow: 0px 4px 10px rgba(252, 132, 45, 0.5);
+    border-radius: 30px;
+    border: none;
+    width: 176px;
+    height: 44px;
+
+    display: block;
+    margin: 0;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: 0.04em;
+    text-transform: capitalize;
+    color: white;
   }
   .auth_input {
     width: 239px;
   }
-  .auth_form input:not(:last-child) {
-    margin-bottom: 70px;
-  }
+
   .auth_title {
     text-align: left;
   }

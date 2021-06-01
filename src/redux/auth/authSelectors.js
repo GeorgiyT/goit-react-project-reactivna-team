@@ -1,5 +1,5 @@
 const getAuthSelector = state => state.auth.tokens.username;
 
 const getEmailSelector = state => state.auth.tokens.email;
-
-export { getAuthSelector, getEmailSelector };
+const isAuthenticatedSelector = state => Boolean(state.auth.tokens.accessToken);
+export { getAuthSelector, getEmailSelector, isAuthenticatedSelector };

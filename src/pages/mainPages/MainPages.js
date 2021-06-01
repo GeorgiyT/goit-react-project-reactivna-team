@@ -1,10 +1,11 @@
-import React from 'react'
-import CalorieForm from '../../components/DailyRate/CalorieForm'
+import React from "react";
+import CalorieForm from "../../components/DailyRateForm/CalorieForm";
+
 
 export default function MainPages() {
-    return (
-        <>
-           <CalorieForm/>
-        </>
-    )
+  return (
+    <>
+      <CalorieForm />
+    </>
+  );
 }

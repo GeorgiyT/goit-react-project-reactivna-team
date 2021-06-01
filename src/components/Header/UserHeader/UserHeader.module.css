@@ -1,0 +1,143 @@
+.header {
+  align-items: center;
+  display: flex;
+  border-bottom: 1px solid #e0e0e0;
+}
+.container {
+  font-family: Gotham Pro;
+}
+.logo {
+  align-items: center;
+  display: flex;
+  margin: 18px 0px 18px 15px;
+  text-decoration: none;
+  color: black;
+  font-weight: 300;
+  font-size: 22px;
+  line-height: 25px;
+  letter-spacing: 0.08em;
+}
+.logo img {
+  margin-right: 10px;
+  width: 46px;
+  height: 44px;
+}
+.logo__color {
+  color: #fc842d;
+}
+
+.menu button {
+  color: #9b9faa;
+  margin-right: 15px;
+  border: 0;
+  border-radius: 5px;
+  font-size: 14px;
+  background: #eff1f3;
+}
+.menu {
+  position: relative;
+  background: #eff1f3;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.menu p {
+  text-align: end;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 13px;
+}
+
+.menu span {
+  border: 1px solid #e0e0e0;
+  height: 32px;
+  margin: 4px 15px 4px 15px;
+}
+.burger {
+  position: absolute;
+  right: 15px;
+  top: 34px;
+  width: 18px;
+  height: 12px;
+  background: #000;
+}
+.navigations {
+  display: none;
+}
+
+@media screen and (min-width: 767px) {
+  .logo {
+    margin-left: 69px;
+  }
+  .header {
+    border: none;
+  }
+  .container {
+    display: flex;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  .menu {
+    background-color: white;
+    margin-left: auto;
+    margin-right: 161px;
+  }
+  .menu button {
+    background-color: white;
+  }
+  .burger {
+    right: 90px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .container {
+    border: none;
+  }
+  .burger {
+    display: none;
+  }
+  .logo {
+    margin-top: 82px;
+    margin-left: 90px;
+  }
+  .logo img {
+    width: 70px;
+    height: 66px;
+  }
+  .menu {
+    padding-top: 82px;
+    padding-right: 90px;
+    margin-right: 0px;
+    padding-left: 204px;
+    background: #f0f1f3;
+  }
+  .menu p {
+    width: 122px;
+  }
+  .menu button {
+    background: #f0f1f3;
+  }
+  .navigations {
+    margin-top: 70px;
+    padding-left: 0px;
+    display: flex;
+    list-style: none;
+    margin-right: 0px;
+    margin-left: auto;
+  }
+  .navigations li {
+    margin-right: 15px;
+    padding-left: 0px;
+  }
+  .navigations span {
+    border: 1px solid #e0e0e0;
+    height: 32px;
+    margin: 4px 22px 4px 22px;
+  }
+  .default {
+    color: #9b9faa;
+  }
+  .active {
+    color: black;
+  }
+}

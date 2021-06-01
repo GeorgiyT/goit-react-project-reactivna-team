@@ -1,9 +1,14 @@
-// import * as Yup from "yup";
+import * as yup from "yup";
 
-// let schema = Yup.object().shape({
-//   email: Yup.string().email().required(),
-//   password: Yup.string().required("write valid email").min(6, "min 6 characters").max(12, "max 12 characters"),
-//   username: Yup.string().min(2, "Too Short!").max(50, "Too Long!").required("Required")
+// let schema = Yup.object({
+//   username: Yup.string().max(15, "Must be 15 characters or less").required("Required"),
+//   password: Yup.string().required("write valid password").min(6, "min 6 characters").max(12, "max 12 characters"),
+//   email: Yup.string().email("Invalid email address").required("Required")
 // });
 
-// export default schema;
+let schema = yup.object().shape({
+  email: yup.string().email("Invalid email address").required("Required"),
+  password: yup.string().required("Please Enter your password").min(6, "min 6 characters").max(12, "max 12 characters")
+});
+
+export default schema;
