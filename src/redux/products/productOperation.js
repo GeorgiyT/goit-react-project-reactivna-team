@@ -13,7 +13,7 @@ const addProduct = (date, productId, weight) => (dispatch) => {
 
 const fetchProduct = (data) => (dispatch) => {
     dispatch(productAction.fetchProductsRequest())
-    axios.post("/day/info", { data })
+    axios.post("/day/info",  data )
         .then((response) => dispatch(productAction.fetchProductSuccess(response.data)))
     .catch((error)=>{dispatch(productAction.fetchProductError(error.message))})
 }

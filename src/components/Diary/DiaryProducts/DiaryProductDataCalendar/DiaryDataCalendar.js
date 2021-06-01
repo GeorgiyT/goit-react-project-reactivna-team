@@ -13,9 +13,9 @@ class DiaryDataCalendar extends Component {
     state = {
         date: ''
     }
-  //  componentDidMount() {
-  //   this.props.setDat(moment(Date.now()).format('dd.MM.yyyy'));
-  // }
+   componentDidMount() {
+     this.props.toFetchProducts({date:moment(Date.now()).format('yyyy-MM-DD')});
+  }
 
   componentDidUpdate(prevProps, prevState) {
     if (prevState.date !== this.state.date) {
