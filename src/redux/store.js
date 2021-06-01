@@ -8,6 +8,8 @@ import productReduser from "./products/productReduser"
 import authReducer from "./auth/authReducer";
 import itemsReducer from "./dailyRate/dailyRateReducer";
 import userReducers from "./user/userReducer";
+// import dateReducer from "./calendar/calendarReducer";
+
 
 const middleware = [
   ...getDefaultMiddleware({
@@ -29,7 +31,9 @@ const store = configureStore({
     auth: persistReducer(authPersitConfig, authReducer),
     user: userReducers,
     products: productReduser,
-     dailyRate: itemsReducer,
+    dailyRate: itemsReducer,
+    // calendar: new Date(),
+    // date: dateReducer
   },
   middleware
 });

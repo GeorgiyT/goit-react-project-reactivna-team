@@ -5,6 +5,7 @@ import sprite from "../../../../images/symbol-defs.svg";
 import { connect } from "react-redux";
 import productOperation from "../../../../redux/products/productOperation";
 import axios from "axios";
+import DiaryListProduct from "../../DiaryListProduct";
 
 class DiaryProductList extends Component {
   state = {
@@ -14,8 +15,15 @@ class DiaryProductList extends Component {
     productId: "",
     error: "",
   };
+
   componentDidMount() {
     // this.props.toFetchProducts(this.props.date)
+  }
+  componentDidUpdate(_, prevstate) {
+    if (prevstate.product !== this.state.product) {
+      this.searchProducts(this.state.product)
+      console.log(this.state.product);
+    }
   }
   handleChange = (e) => {
     const { name, value } = e.target;
@@ -25,8 +33,9 @@ class DiaryProductList extends Component {
   };
   handleSubmit = (e) => {
     e.preventDefault();
+    console.log(this.props.date);
     this.props.toAddProducts(
-      this.props.date,
+      this.props.date ,
       this.state.productId,
       this.state.weight
     );
@@ -40,6 +49,7 @@ class DiaryProductList extends Component {
       weight: 100,
     });
   };
+
   searchProducts = (query) => {
     if (
       query.includes("(") ||
@@ -47,26 +57,29 @@ class DiaryProductList extends Component {
       query.includes("+") ||
       query.includes("&")
     )
+    
       return;
     axios
-      .get(`/product?search=${query}`)
+      .get(`/product?search=${query}`,{
+        headers: { Authorization: `Bearer ${this.props.token}` }
+        
+
+      })
       .then((resp) => {
-        if (this.state.product.length < 3) {
-          return(resp(console.log))
-        }
-        // this.setState({
-        //   productsQuery: resp.data.length > 1 ? [...resp.data] : [],
-        // });
+        this.setState({
+          productsQuery: resp.data ? resp.data : []
+        })
+         console.log(this.state.productsQuery);
       })
       .catch((err) => {
-        if (
-          err.response.status === 401 ||
-          err.response.status === 403 ||
-          err.response.status === 404
-        ) {
-          this.props.refreshUser();
-        }
-        if (err.response.status === 400) {
+        // if (
+        //   // err.response?.status === 401 ||
+        //   // err.response?.status === 403 ||
+        //   // err.response?.status === 404
+        // ) {
+          // this.props.refreshUser();
+        // }
+        if (err.response?.status === 400) {
           this.setState({ productsQuery: [] });
           //   this.props.errorToTrue();
           //   this.props.NotificationToTrue();
@@ -106,6 +119,13 @@ class DiaryProductList extends Component {
               <use href={sprite + "#icon-plus"} />
             </svg>
           </button>
+          {this.state.productsQuery.length > 0 && (
+            <DiaryListProduct
+              toGetProduct={this.getCurrentProduct}
+              prod={this.state.productsQuery}
+              
+            />
+          )}
         </form>
       </div>
     );
@@ -113,6 +133,7 @@ class DiaryProductList extends Component {
 }
 const mapStateToProps = (state) => ({
   date: state.date,
+  token: state.auth.tokens.accessToken
 });
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -122,4 +143,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapDispatchToProps, mapStateToProps)(DiaryProductList);
+export default connect( mapStateToProps, mapDispatchToProps)(DiaryProductList);
