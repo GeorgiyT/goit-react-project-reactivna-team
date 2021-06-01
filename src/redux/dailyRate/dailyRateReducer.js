@@ -1,5 +1,5 @@
-import { createReducer } from '@reduxjs/toolkit'
-import { getDailyRateSuccess } from './dailyRateActions'
+import { createReducer } from "@reduxjs/toolkit";
+import { getDailyRateSuccess } from "./dailyRateActions";
 
 const dailyRateState = {
   id: "",
@@ -13,14 +13,15 @@ const dailyRateState = {
       dailyRate: "",
       percentsOfDailyRate: "",
       userId: "",
-      __v: "",
-    },
+      __v: ""
+    }
   ],
-  notAllowedProducts: [],
-}
+  notAllowedProducts: []
+};
 
 const itemsReducer = createReducer(dailyRateState, {
-    [getDailyRateSuccess]: (_, { payload }) => payload,
-})
+  [getDailyRateSuccess]: (_, { payload }) => payload
+  // [getUserSuccess]: ()
+});
 
 export default itemsReducer;

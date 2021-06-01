@@ -1,60 +1,56 @@
 import React from "react";
 import * as Yup from "yup";
 import styles from "../DailyRateForm/CalorieForm.module.css";
-import { useDispatch} from "react-redux";
-import { getDailyRateOperation } from "../../redux/dailyRate/dailyRateOperations";
+import { useDispatch, useSelector } from "react-redux";
+import { AuthDailyRateOperation, getDailyRateOperation } from "../../redux/dailyRate/dailyRateOperations";
 import { Field, Form, Formik } from "formik";
-import container from '../../styles/container.css'
+import { isAuthenticatedSelector } from "../../redux/auth/authSelectors";
 
-
-export default function CalorieForm() {
+export default function CalorieForm({onShowModal}) {
   const dispatch = useDispatch();
-
-  const handleSubmit = values => {
-    values.bloodType = Number(values.bloodType);
-    dispatch(getDailyRateOperation(values));
-  };
+  const isAuth = useSelector(isAuthenticatedSelector);
   const validationSchema = Yup.object().shape({
     height: Yup.number()
-      .min(100, "Мінімальне значенння 100 см.")
-      .max(250, "Максимальне значення 250 см.")
-      .required("Обов`язкове"),
-    age: Yup.number()
-      .min(18, "Мінімум 18 років")
-      .max(100, "Максимум 100 років")
-      .required("Обов`язкове"),
-    weight: Yup.number()
-      .min(20, "Мінімум 20 кг.")
-      .max(500, "Максимум 500 кг.")
-      .required("Обов`язкове"),
+    .min(100, "Мінімальне значенння 100 см.")
+    .max(250, "Максимальне значення 250 см.")
+    .required("Обов`язкове"),
+    age: Yup.number().min(18, "Мінімум 18 років").max(100, "Максимум 100 років").required("Обов`язкове"),
+    weight: Yup.number().min(20, "Мінімум 20 кг.").max(500, "Максимум 500 кг.").required("Обов`язкове"),
     desiredWeight: Yup.number()
-      .min(20, "Мінімум 20 кг.")
-      .max(500, "Максимум 500 кг.")
-      .required("Обов`язкове")
-      .when("weight", (weight, schema) => {
-        return schema.test({
-          test: desiredWeight => !!weight && desiredWeight < weight,
-          message: "Бажана вага повина бути меншою від поточної"
-        });
-      }),
+    .min(20, "Мінімум 20 кг.")
+    .max(500, "Максимум 500 кг.")
+    .required("Обов`язкове")
+    .when("weight", (weight, schema) => {
+      return schema.test({
+        test: desiredWeight => !!weight && desiredWeight < weight,
+        message: "Бажана вага повина бути меншою від поточної"
+      });
+    }),
     bloodType: Yup.number().required("Обов`язкове")
   });
-
+  const getNumbers = values => {
+    const keys = Object.keys(values);
+    keys.forEach(key => (values[key] = Number(values[key])));
+    return values;
+  };
   return (
-    <div className='container'>
+    <div className="container">
       <Formik
-          validationSchema={validationSchema} 
+        validationSchema={validationSchema}
         initialValues={{
-          height: '',
-          age: '',
-          weight: '',
-          desiredWeight: '',
-          bloodType: ''
+          height: "",
+          age: "",
+          weight: "",
+          desiredWeight: "",
+          bloodType: ""
         }}
         onSubmit={values => {
-          handleSubmit(values);
+          isAuth ? dispatch(AuthDailyRateOperation(getNumbers(values))) : dispatch(getDailyRateOperation(getNumbers(values)));
+          setTimeout(() => {
+          onShowModal();
+          }, 1000);
         }}
-      >
+        >
         {({ errors, touched, values }) => (
           <Form className={styles.form}>
             <h2 className={styles.title_form}>Просчитай свою суточную норму калорий прямо сейчас</h2>
@@ -66,7 +62,7 @@ export default function CalorieForm() {
                     className={`${styles.input} ${errors.height && touched.height ? styles.error_input : ""}`}
                     name="height"
                     type="number"
-                   values={values.height}
+                    values={values.height}
                   />
                   <p className={`${styles.label_value} ${errors.height && touched.height ? styles.error_label_value : ""}`}>
                     Рост*
@@ -78,8 +74,8 @@ export default function CalorieForm() {
                     placeholder=""
                     className={`${styles.input} ${touched.age && errors.age ? styles.error_input : ""}`}
                     name="age"
-                    type="text"
-                     values={values.age}
+                    type="number"
+                    values={values.age}
                   />
                   <p className={`${styles.label_value} ${touched.age && errors.age ? styles.error_label_value : ""}`}>
                     Возраст*
@@ -91,8 +87,8 @@ export default function CalorieForm() {
                     placeholder=""
                     className={`${styles.input} ${touched.weight && errors.weight ? styles.error_input : ""}`}
                     name="weight"
-                    type="text"
-                   values={values.weight}
+                    type="number"
+                    values={values.weight}
                   />
                   <p className={`${styles.label_value} ${touched.weight && errors.weight ? styles.error_label_value : ""}`}>
                     Текущий вес*
@@ -106,8 +102,8 @@ export default function CalorieForm() {
                     placeholder=""
                     className={`${styles.input} ${touched.desiredWeight && errors.desiredWeight ? styles.error_input : ""}`}
                     name="desiredWeight"
-                    type="text"
-                 values={values.desiredWeight}
+                    type="number"
+                    values={values.desiredWeight}
                   />
                   <p
                     className={`${styles.label_value} ${
