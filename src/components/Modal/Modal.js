@@ -47,8 +47,8 @@ class Modal extends Component {
                   <use href={sprite + "#icon-close"} />
                 </svg>
               </span>
-              <span className={styles.goBackSvg}>
-                <svg width="18" height="18">
+              <span>
+                <svg className={styles.goBackSvg} width="20" height="20">
                   <use href={sprite + "#icon-arrow"} />
                 </svg>
               </span>

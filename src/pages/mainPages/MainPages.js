@@ -16,9 +16,9 @@ export default function MainPages() {
     setShowModal(false);
   };
   return (
-    <>
+    <div className="container">
       <CalorieForm openModal={toggleModal}/>
       <Modal onModalToggle={modalClose} showModal={showModal}/>
-    </>
+    </div>
   );
 }
