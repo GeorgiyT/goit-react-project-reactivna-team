@@ -4,33 +4,28 @@ import styles from "../DailyRateForm/CalorieForm.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { AuthDailyRateOperation, getDailyRateOperation } from "../../redux/dailyRate/dailyRateOperations";
 import { Field, Form, Formik } from "formik";
-import container from "../../styles/container.css";
 import { isAuthenticatedSelector } from "../../redux/auth/authSelectors";
 
-export default function CalorieForm() {
+export default function CalorieForm({onShowModal}) {
   const dispatch = useDispatch();
   const isAuth = useSelector(isAuthenticatedSelector);
-  // const handleSubmit = values => {
-  //   values.bloodType = Number(values.bloodType);
-  //   dispatch(getDailyRateOperation(values));
-  // };
   const validationSchema = Yup.object().shape({
     height: Yup.number()
-      .min(100, "Мінімальне значенння 100 см.")
-      .max(250, "Максимальне значення 250 см.")
-      .required("Обов`язкове"),
+    .min(100, "Мінімальне значенння 100 см.")
+    .max(250, "Максимальне значення 250 см.")
+    .required("Обов`язкове"),
     age: Yup.number().min(18, "Мінімум 18 років").max(100, "Максимум 100 років").required("Обов`язкове"),
     weight: Yup.number().min(20, "Мінімум 20 кг.").max(500, "Максимум 500 кг.").required("Обов`язкове"),
     desiredWeight: Yup.number()
-      .min(20, "Мінімум 20 кг.")
-      .max(500, "Максимум 500 кг.")
-      .required("Обов`язкове")
-      .when("weight", (weight, schema) => {
-        return schema.test({
-          test: desiredWeight => !!weight && desiredWeight < weight,
-          message: "Бажана вага повина бути меншою від поточної"
-        });
-      }),
+    .min(20, "Мінімум 20 кг.")
+    .max(500, "Максимум 500 кг.")
+    .required("Обов`язкове")
+    .when("weight", (weight, schema) => {
+      return schema.test({
+        test: desiredWeight => !!weight && desiredWeight < weight,
+        message: "Бажана вага повина бути меншою від поточної"
+      });
+    }),
     bloodType: Yup.number().required("Обов`язкове")
   });
   const getNumbers = values => {
@@ -51,8 +46,11 @@ export default function CalorieForm() {
         }}
         onSubmit={values => {
           isAuth ? dispatch(AuthDailyRateOperation(getNumbers(values))) : dispatch(getDailyRateOperation(getNumbers(values)));
+          setTimeout(() => {
+          onShowModal();
+          }, 1000);
         }}
-      >
+        >
         {({ errors, touched, values }) => (
           <Form className={styles.form}>
             <h2 className={styles.title_form}>Просчитай свою суточную норму калорий прямо сейчас</h2>
