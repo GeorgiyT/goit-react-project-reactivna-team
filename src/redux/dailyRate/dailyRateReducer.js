@@ -21,7 +21,6 @@ const dailyRateState = {
 
 const itemsReducer = createReducer(dailyRateState, {
   [getDailyRateSuccess]: (_, { payload }) => payload
-  // [getUserSuccess]: ()
 });
 
 export default itemsReducer;

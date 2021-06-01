@@ -33,7 +33,7 @@
   padding: 40px 15px 80px;
   background-color: white;
 }
-.closeModalBtn {
+.closeBtn {
   display: block;
   position: absolute;
   top: 24px;
@@ -43,10 +43,10 @@
   border: none;
   color: #000000;
 }
-.closeModalImg {
+.closeSvg {
   display: none;
 }
-.goBackImg {
+.goBackSvg {
   display: block;
   position: absolute;
   top: -45px;
@@ -63,10 +63,10 @@
     top: 0;
   }
 
-  .goBackImg {
+  .goBackSvg {
     display: none;
   }
-  .closeModalImg {
+  .closeSvg {
     display: block;
   }
 }
