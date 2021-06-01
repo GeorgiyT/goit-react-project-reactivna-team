@@ -2,6 +2,7 @@ import { createReducer } from '@reduxjs/toolkit';
 import productAction from './productAction';
 
 
+
 const toAddProduct = (state, action) => {
   return action.payload;
 };
@@ -17,7 +18,7 @@ const products = createReducer(
     [productAction.fetchProductSuccess]: (state, action) => action.payload,
     [productAction.addProductSuccess]: toAddProduct,
     [productAction.deleteProductSuccess]: toDeleteProduct,
-    
+      
   },
 );
 

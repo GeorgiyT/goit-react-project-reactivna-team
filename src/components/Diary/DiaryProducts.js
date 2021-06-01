@@ -3,7 +3,7 @@ import DiaryProductList from './DiaryProducts/DiaryProductList/DiaryProductList'
 import s from './DiaryProducts.module.css'
 import productOperation from '../../redux/products/productOperation';
 import { connect } from 'react-redux';
-import produstSelector from '../../redux/products/produstSelector';
+import productSelector from '../../redux/products/productSelector';
 import DiaryProdustListItem from './DiaryProducts/DiaryProdustListItem/DiaryProdustListItem';
 
 
@@ -16,13 +16,13 @@ const DiaryProducts =({products})=> {
             <>
                 <DiaryProductList />
                 {products ? (
-                    <h2 className={s.title} > Продукты еще не добавлены</h2>) : (
+                    <h2 className={s.title}> Продукты еще не добавлены</h2>) : (
                     ''
                 )}
                 {products && (
                     <ul>
                         {products.map(({ id, ...props }) => (
-                            <DiaryProdustListItem key={id} id={id} {...props} />
+                            <DiaryProdustListItem key={id}  {...props} />
                         ))}
                     </ul>
                 )}
@@ -30,15 +30,14 @@ const DiaryProducts =({products})=> {
         );
     
 }
-// const mapStateToProps = state => ({
-
-//     products:produstSelector.getProducts(state),
-//   date: state.date,
-// });
+const mapStateToProps = state => ({
+    products:productSelector.getProducts(state),
+  date: state.date,
+});
 const mapDispatchToProps = dispatch => {
   return {
       toFetchProducts: data=> dispatch(productOperation.fetchProduct(data))
   };
 };
 
-export default connect( mapDispatchToProps)(DiaryProducts);
+export default connect( mapStateToProps ,mapDispatchToProps)(DiaryProducts);
