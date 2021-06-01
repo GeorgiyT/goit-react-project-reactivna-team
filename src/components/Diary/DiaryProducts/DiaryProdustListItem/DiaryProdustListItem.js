@@ -1,32 +1,51 @@
-import React from 'react'
-import { connect } from 'react-redux';
-import productOperation from '../../../../redux/products/productOperation';
+import React from "react";
+import { connect } from "react-redux";
+import productOperation from "../../../../redux/products/productOperation";
+import s from "../DiaryProdustListItem/DiaryProdustListItem.module.css";
 
-const DiaryProdustListItem = ({ title, weidht, kcal,dayId }) => {
+const DiaryProdustListItem = ({ title, weight, kcal, deleteProduct, id,day ,date}) => {
 
-        return (
-        <>
-        <li>
-              <p>{title}</p>
-                <p>{weidht}</p>
-                <p>{kcal}</p>
-                {/* <button type="button" onClick={() => deleteProduct(dayId)}>
-                </button>            */}
-        </li>
-   </>
- );
-
-}
-// const mapStateToProps = state => ({
-//         dayId: state.products.id
-// })
-
-// const mapDispatchToProps = (dispatch) => {
-//         return {
-//                 deleteProduct: dayId => {
-//                         return dispatch(productOperation.deleteProduct(dayId))
-//                 },
-//         };
-// };
-// export default connect(mapStateToProps, mapDispatchToProps)(DiaryProdustListItem);
-export default DiaryProdustListItem
+  const calories = Math.round(kcal);
+  const dayId = day.find((item) =>
+    item.date === date
+  )?._id;
+  // console.log(date,'date');
+  // console.log(day.find ((item)=>
+  //   item.date === date
+  // )?._id);
+  return (
+    <>
+      <li className={s.title}>
+        <p className={s.nameProd}>{title}</p>
+        <p className={s.weight}>{weight} г</p>
+        <p className={s.kcal}>{calories} ккaл</p>
+        <button
+          type="button"
+          className={s.button}
+          onClick={() => deleteProduct(dayId,id)}
+        >
+          X
+        </button>
+      </li>
+    </>
+  );
+};
+const mapStateToProps = (state) => ({
+  date: state.date,
+  dayId: state.products.id,
+  day: state.user?.data?.days
+});
+console.log(productOperation);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    deleteProduct: (dayId,id) => {
+      return dispatch(productOperation.deleteProduct(dayId,id));
+      
+    },
+  };
+};
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(DiaryProdustListItem);
+// export default DiaryProdustListItem
