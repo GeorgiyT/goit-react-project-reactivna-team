@@ -1,15 +1,15 @@
-
 .overlay {
   position: fixed;
-  top: 80px;
+  top: 0;
   left: 0;
+  right: 0;
   width: 100vw;
-  height: 100%;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow-y: scroll;
   background-color: rgba(33, 33, 33, 0.12);
+  bottom: 0;
 }
 .notShow {
   opacity: 0;
@@ -28,8 +28,6 @@
 }
 
 .modal {
-  position: absolute;
-  top: 35px;
   width: 100%;
   padding: 40px 15px 80px;
   background-color: white;
@@ -37,8 +35,8 @@
 .closeBtn {
   display: block;
   position: absolute;
-  top: 24px;
-  right: 24px;
+  top: 57px;
+  right: 118px;
   border-radius: 50%;
   background-color: white;
   border: none;
@@ -58,10 +56,6 @@
     width: 594px;
     height: 580px;
     padding: 64px 42px 68px;
-    top: 222px;
-  }
-  .overlay {
-    top: 0;
   }
 
   .goBackSvg {
@@ -76,7 +70,6 @@
     width: 690px;
     height: 580px;
     padding: 64px 90px 81px;
-    top: 135px;
   }
 }
 .enter {
