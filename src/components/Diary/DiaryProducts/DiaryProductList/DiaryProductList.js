@@ -26,14 +26,26 @@ class DiaryProductList extends Component {
     }
   }
   handleChange = (e) => {
-    const { name, value } = e.target;
+    const { name, value, id } = e.target;
+    console.log(id);
     this.setState({
       [name]: value,
+      
     });
+    if (name === "productId") {
+      this.setState({
+      [name]: value,
+      productId:  id,
+    });
+    }
+    
   };
   handleSubmit = (e) => {
     e.preventDefault();
     console.log(this.props.date);
+    console.log(this.props.date ,
+      this.state.productId,
+      this.state.weight);
     this.props.toAddProducts(
       this.props.date ,
       this.state.productId,
@@ -44,7 +56,7 @@ class DiaryProductList extends Component {
   getCurrentProduct = (e) => {
     this.setState({
       product: e.target.textContent,
-      productId: e.target.dataset.id,
+      productId: e.target.id,
       productsQuery: [],
       weight: 100,
     });
@@ -69,23 +81,13 @@ class DiaryProductList extends Component {
         this.setState({
           productsQuery: resp.data ? resp.data : []
         })
-         console.log(this.state.productsQuery);
+        //  console.log(this.state.productsQuery);
       })
       .catch((err) => {
-        // if (
-        //   // err.response?.status === 401 ||
-        //   // err.response?.status === 403 ||
-        //   // err.response?.status === 404
-        // ) {
-          // this.props.refreshUser();
-        // }
+        
         if (err.response?.status === 400) {
           this.setState({ productsQuery: [] });
-          //   this.props.errorToTrue();
-          //   this.props.NotificationToTrue();
-          //   setTimeout(() => {
-          //     this.props.NotificationToFalse();
-          //   }, 2000);
+          
         }
       });
   };
@@ -94,7 +96,7 @@ class DiaryProductList extends Component {
     return (
       <div className={s.cont}>
         <DiaryDataCalendar />
-        <form onSubmit={this.handleSubmit}>
+        <form  onSubmit={this.handleSubmit}>
           <label>
             <input
               className={s.product}

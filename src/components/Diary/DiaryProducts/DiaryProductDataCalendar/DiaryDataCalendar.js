@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import DataCalendar from './DiaryProductDataCalendar'
 import sprite from "../../../../images/symbol-defs.svg";
+import moment from 'moment';
 import s from './DiaryDataCalendar.module.css'
 import { connect } from 'react-redux';
 import setData from '../../../../redux/calendar/calendarAction'
@@ -12,9 +13,9 @@ class DiaryDataCalendar extends Component {
     state = {
         date: ''
     }
-//     componentDidMount() {
-//         this.props.setDate(Date.now().format('YYYY-MM-DD'))
-//   }
+  //  componentDidMount() {
+  //   this.props.setDat(moment(Date.now()).format('dd.MM.yyyy'));
+  // }
 
   componentDidUpdate(prevProps, prevState) {
     if (prevState.date !== this.state.date) {
@@ -26,7 +27,7 @@ class DiaryDataCalendar extends Component {
     // setSomeDate(someDate);
     // console.log(this.props);
 
-    const result = someDate ?someDate.format('YYYY-MM-DD') : 0;
+    const result = someDate ? moment(someDate).format('dd.MM.yyyy') : 0;
     this.setState({ date: result });
     this.props.setData(result);
   };
