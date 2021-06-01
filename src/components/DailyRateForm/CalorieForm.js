@@ -5,9 +5,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { AuthDailyRateOperation, getDailyRateOperation } from "../../redux/dailyRate/dailyRateOperations";
 import { Field, Form, Formik } from "formik";
 import { isAuthenticatedSelector } from "../../redux/auth/authSelectors";
+import { getUserData } from "../../redux/user/userSelector";
 
 export default function CalorieForm({openModal}) {
   const dispatch = useDispatch();
+  console.log(getUserData);
+
   const isAuth = useSelector(isAuthenticatedSelector);
   const validationSchema = Yup.object().shape({
     height: Yup.number()
@@ -34,7 +37,7 @@ export default function CalorieForm({openModal}) {
     return values;
   };
   return (
-    <div className="container">
+    <div>
       <Formik
         validationSchema={validationSchema}
         initialValues={{
