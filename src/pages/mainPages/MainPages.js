@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import CalorieForm from "../../components/DailyRateForm/CalorieForm";
 import Modal from "../../components/Modal/Modal";
-import styles from "../../components/Modal/Modal.module.css";
+
 
 
 export default function MainPages() {
   const [showModal, setShowModal] = useState(false);
  
 
-  const modalToggle = () => {
+  const toggleModal = () => {
     setShowModal((prevState) => !prevState.showModal);
   };
 
@@ -17,9 +17,8 @@ export default function MainPages() {
   };
   return (
     <>
-      <CalorieForm onShowModal={modalToggle}/>
-      <div id="overlay" className={showModal ? styles.overlay : styles.notShow}>
-           <Modal onModalToggle={modalClose} /></div>
+      <CalorieForm openModal={toggleModal}/>
+      <Modal onModalToggle={modalClose} showModal={showModal}/>
     </>
   );
 }

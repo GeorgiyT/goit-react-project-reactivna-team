@@ -6,7 +6,7 @@ import { AuthDailyRateOperation, getDailyRateOperation } from "../../redux/daily
 import { Field, Form, Formik } from "formik";
 import { isAuthenticatedSelector } from "../../redux/auth/authSelectors";
 
-export default function CalorieForm({onShowModal}) {
+export default function CalorieForm({openModal}) {
   const dispatch = useDispatch();
   const isAuth = useSelector(isAuthenticatedSelector);
   const validationSchema = Yup.object().shape({
@@ -46,9 +46,11 @@ export default function CalorieForm({onShowModal}) {
         }}
         onSubmit={values => {
           isAuth ? dispatch(AuthDailyRateOperation(getNumbers(values))) : dispatch(getDailyRateOperation(getNumbers(values)));
-          setTimeout(() => {
-          onShowModal();
-          }, 1000);
+          if (openModal) {
+       setTimeout(() => {
+          openModal();
+          }, 1000)
+    }
         }}
         >
         {({ errors, touched, values }) => (
