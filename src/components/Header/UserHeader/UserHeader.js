@@ -1,15 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import s from "./UserHeader.module.css";
 import logo from "../../../images/header/logo.png";
 import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import * as authOperations from "../../../redux/auth/authOperations";
 import { getUserNameSelector } from "../../../redux/user/userSelector";
+import Burger from "./Burger/Burger";
 
 const UserHeader = ({ userNic, logOutFunc }) => {
-  console.log(userNic);
+  const [show, setShow] = useState(false);
+  const onToggle = () => {
+    setShow((prevState) => !prevState);
+  };
   return (
     <div className={s.container}>
+      <div className={s.decoration}></div>
       <div className={s.header}>
         <a href="/" className={s.logo}>
           <img src={logo} alt="" />
@@ -43,7 +48,12 @@ const UserHeader = ({ userNic, logOutFunc }) => {
         <span></span>
         <button onClick={logOutFunc}>Выйти</button>
       </div>
-      <div className={s.burger}></div>
+      <Burger show={show} onToggle={onToggle} />
+      <button onClick={onToggle} className={show ? s.burger__cross : s.burger}>
+        <span className={s.bar1}></span>
+        <span className={s.bar2}></span>
+        <span className={s.bar3}></span>
+      </button>
     </div>
   );
 };
