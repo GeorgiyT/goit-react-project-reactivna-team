@@ -5,24 +5,25 @@ import productOperation from '../../redux/products/productOperation';
 import { connect } from 'react-redux';
 import productSelector from '../../redux/products/productSelector';
 import DiaryProdustListItem from './DiaryProducts/DiaryProdustListItem/DiaryProdustListItem';
+// import s from '../Diary/DiaryProducts/DiaryProdustListItem/DiaryProdustListItem.module.css'
 
 
 
 
 
 const DiaryProducts =({products})=> {
-    
+    console.log(products,'products');
         return (
             <>
                 <DiaryProductList />
-                {products ? (
+                {/* {products ? (
                     <h2 className={s.title}> Продукты еще не добавлены</h2>) : (
                     ''
-                )}
+                )} */}
                 {products && (
-                    <ul>
-                        {products.map(({ id, ...props }) => (
-                            <DiaryProdustListItem key={id}  {...props} />
+                    <ul className={s.listeeeer}>
+                        {products.map(({ id, ...props}) => (
+                            <DiaryProdustListItem key={id} id={id} {...props} />
                         ))}
                     </ul>
                 )}

@@ -2,13 +2,14 @@ import { createReducer } from "@reduxjs/toolkit";
 import productAction from "./productAction";
 
 const toAddProduct = (state, action) => {
-  return action.payload;
+  return [...state,action.payload]
 };
 
-const toDeleteProduct = (state, { payload }) => ({
-  ...state,
-  eatenProducts: state.eatenProducts.filter(item => item.id !== payload)
-});
+const toDeleteProduct = (state, { payload }) => {
+  console.log(state,"rer",state.eatenProducts);
+  return state?.eatenProducts.filter(item => item.id !== payload);
+ 
+};
 
 export const currentDay = createReducer(
   {},
@@ -17,7 +18,7 @@ export const currentDay = createReducer(
   }
 );
 const products = createReducer(
-  {},
+  [],
   {
     // [productAction.fetchProductSuccess]: (state, action) => action.payload,
     [productAction.addProductSuccess]: toAddProduct,

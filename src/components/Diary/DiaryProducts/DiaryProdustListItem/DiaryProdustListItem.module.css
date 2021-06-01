@@ -1,0 +1,55 @@
+.title {
+  display: flex;
+  margin-bottom: 15px;
+}
+.nameProd {
+  color: #212121;
+  font-family: Verdana;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  letter-spacing: 0.04em;
+  margin-right: 30px;
+  padding: 20px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.weight {
+  font-family: Verdana;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  letter-spacing: 0.04em;
+  color: #212121;
+  margin-right: 30px;
+  text-align: right;
+  padding: 20px;
+  padding-right: 0px;
+  border-bottom: 1px solid #e0e0e0;
+}
+.kcal {
+  padding: 20px;
+  padding-right: 0px;
+  border-bottom: 1px solid #e0e0e0;
+  font-family: Verdana;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  text-align: right;
+  line-height: 17px;
+  letter-spacing: 0.04em;
+  color: #212121;
+  margin-right: 30px;
+}
+.button {
+  width: 10px;
+  height: 10px;
+  padding: 0;
+  margin: auto 0;
+  color: #9b9faa;
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
