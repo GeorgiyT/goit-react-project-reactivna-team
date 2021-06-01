@@ -1,6 +1,7 @@
 import { combineReducers, createReducer } from "@reduxjs/toolkit";
 import { create } from "yup/lib/array";
 import { setUserLoading, loginSuccess, logOutSuccess } from "../auth/authActions";
+import {addProductSuccess, fetchProductSuccess} from "../products/productAction";
 import { getUserError, getUserSuccess, resetError, setError } from "./userActions";
 
 const userDataReducer = createReducer(
@@ -28,7 +29,9 @@ const notAllowedReducer = createReducer([], {
 });
 
 const daysReducer = createReducer([], {
-  [getUserSuccess]: (_, { payload }) => payload.userData.days
+  [getUserSuccess]: (_, { payload }) => payload.userData.days,
+  [addProductSuccess]: (state, { payload }) => [...state, payload.day],
+  [fetchProductSuccess]: (state, { payload }) => [...state, payload.day]
 });
 
 // const dailyRateReducer = createReducer([], {

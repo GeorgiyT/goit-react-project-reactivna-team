@@ -1,11 +1,11 @@
 import { createAction } from '@reduxjs/toolkit';
 
 const addProductRequest = createAction('Product/addRequest')
-const addProductSuccess = createAction('Product/addSuccess')
+ export const addProductSuccess = createAction('Product/addSuccess')
 const addProductError = createAction('Product/addError')
 
 const fetchProductsRequest = createAction('Product/fetchRequest')
-const  fetchProductSuccess = createAction('Product/fetchSuccess')
+export const  fetchProductSuccess = createAction('Product/fetchSuccess')
 const fetchProductError = createAction('Product/fetchError')
 
 const deleteProductsRequest = createAction('Product/deleteRequest')

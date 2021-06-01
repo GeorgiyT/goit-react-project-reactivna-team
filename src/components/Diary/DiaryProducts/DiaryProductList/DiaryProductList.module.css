@@ -43,15 +43,5 @@
 }
 .cont {
   margin-top: 40px;
-}
-.list {
-  position: absolute;
-  top: 160px;
-  left: -23px;
-  z-index: 100;
-  background-color: white;
-  max-height: 300px;
-  overflow-y: scroll;
-}
-.listin {
+  margin-left: 115px;
 }

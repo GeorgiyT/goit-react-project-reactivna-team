@@ -8,7 +8,7 @@ import productReduser from "./products/productReduser"
 import authReducer from "./auth/authReducer";
 import itemsReducer from "./dailyRate/dailyRateReducer";
 import userReducers from "./user/userReducer";
-// import dateReducer from "./calendar/calendarReducer";
+import dateReducer from "./calendar/calendarReducer";
 
 
 const middleware = [
@@ -33,7 +33,7 @@ const store = configureStore({
     products: productReduser,
     dailyRate: itemsReducer,
     // calendar: new Date(),
-    // date: dateReducer
+    date: dateReducer
   },
   middleware
 });
