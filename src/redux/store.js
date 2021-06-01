@@ -4,12 +4,12 @@ import { FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from "redux-persist
 import persistReducer from "redux-persist/es/persistReducer";
 import persistStore from "redux-persist/es/persistStore";
 import storage from "redux-persist/lib/storage";
-import productReduser from "./products/productReduser"
+import productReduser, { currentDay } from "./products/productReduser";
 import authReducer from "./auth/authReducer";
 import itemsReducer from "./dailyRate/dailyRateReducer";
 import userReducers from "./user/userReducer";
 import dateReducer from "./calendar/calendarReducer";
-
+import { daysReducer } from "./day/dayReducer";
 
 const middleware = [
   ...getDefaultMiddleware({
@@ -33,7 +33,9 @@ const store = configureStore({
     products: productReduser,
     dailyRate: itemsReducer,
     // calendar: new Date(),
-    date: dateReducer
+    date: dateReducer,
+    days: daysReducer,
+    currentDay: currentDay
   },
   middleware
 });
