@@ -69,7 +69,8 @@ class Modal extends Component {
               </span>
             </button>
 
-            <DailyRateModal />
+            {/* <DailyRateModal /> */}
+            {this.props.children}
           </div>
         </div>
       </>

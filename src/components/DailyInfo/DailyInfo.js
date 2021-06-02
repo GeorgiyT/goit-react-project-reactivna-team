@@ -19,11 +19,11 @@ import {
 } from "./DailyInfo.module.css";
 
 export default function DailyInfo() {
-  const dailyKcal = useSelector(calSelector);
-  const notAllowedProducts = useSelector(notProductsSelector);
-  const kcalLeft = useSelector(kcalLeftSelector);
-  const kcalConsumed = useSelector(kcalConsumedSelector);
-  const percentsOfDailyRate = useSelector(percentsOfDailyRateSelector);
+//   const dailyKcal = useSelector(calSelector);
+//   const notAllowedProducts = useSelector(notProductsSelector);
+//   const kcalLeft = useSelector(kcalLeftSelector);
+//   const kcalConsumed = useSelector(kcalConsumedSelector);
+//   const percentsOfDailyRate = useSelector(percentsOfDailyRateSelector);
   return (
     <div className={mainBox}>
       <div className={dayBox}>
@@ -31,19 +31,19 @@ export default function DailyInfo() {
         <ul className={kcalList}>
           <li className={kcalItem}>
             <span>Осталось</span>
-            <span>{kcalLeft} ккал</span>
+            {/* <span>{kcalLeft} ккал</span> */}
           </li>
           <li className={kcalItem}>
             <span>Употреблено</span>
-            <span>{kcalConsumed} ккал</span>
+            {/* <span>{kcalConsumed} ккал</span> */}
           </li>
           <li className={kcalItem}>
             <span>Дневная норма</span>
-            <span>{dailyKcal} ккал</span>
+            {/* <span>{dailyKcal} ккал</span> */}
           </li>
           <li className={kcalItem}>
             <span>n% от нормы</span>
-            <span>{percentsOfDailyRate} ккал</span>
+            {/* <span>{percentsOfDailyRate} ккал</span> */}
           </li>
         </ul>
       </div>
@@ -56,7 +56,7 @@ export default function DailyInfo() {
             </li>
           ))}
           </ul> */}
-        <p className={productList}> {notAllowedProducts.join(", ")}</p>
+        {/* <p className={productList}> {notAllowedProducts.join(", ")}</p> */}
       </div>
     </div>
   );
