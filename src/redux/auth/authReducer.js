@@ -8,7 +8,8 @@ import {
   logOutSuccess,
   registerError,
   registerRequest,
-  registerSuccess
+  registerSuccess,
+  updateAccessToken
 } from "./authActions";
 
 const tokenReducer = createReducer(
@@ -20,7 +21,12 @@ const tokenReducer = createReducer(
       refreshToken: payload.refreshToken,
       sid: payload.sid
     }),
-    [logOutSuccess]: () => ({})
+    [logOutSuccess]: () => ({}),
+    [updateAccessToken]: (_, { payload }) => ({
+      accessToken: payload.newAccessToken,
+      refreshToken: payload.newRefreshToken,
+      sid: payload.sid
+    })
   }
 );
 

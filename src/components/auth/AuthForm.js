@@ -1,16 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import { useDispatch } from "react-redux";
 import { loginOperation, registerOperation } from "../../redux/auth/authOperations";
 import schema from "./validator/validator";
 import style from "../auth/AuthForm.module.css";
-import { useHistory, useLocation } from "react-router-dom";
-
+import { Link, useHistory, useLocation } from "react-router-dom";
+import svg from "../../images/varification/symbol-defs.svg";
 const AuthForm = () => {
   const dispatch = useDispatch();
   const location = useLocation();
   const history = useHistory();
-
+  const [showPassword, showSetPassword] = useState(false);
+  const toggleShowPassword = () => showSetPassword(prevState => !prevState);
   return (
     <div className="container">
       <div className={style.auth_container}>
@@ -20,6 +21,7 @@ const AuthForm = () => {
           <h1 className={style.auth_title}>Bход</h1>
         )}
         <Formik
+          enableReinitialize
           initialValues={{ email: "", password: "", username: "" }}
           validationSchema={schema}
           onSubmit={values => {
@@ -34,29 +36,55 @@ const AuthForm = () => {
           ) => (
             <Form className={style.auth_form}>
               <div className={style.form_group}>
-                <div className={style.form_group_item}>
-                  <Field className={style.auth_input} type="email" name="email" placeholder="Email" />
-                  <ErrorMessage className={style.input_error} name="email" component="div" />
-                </div>
-                <div className={style.form_group_item}>
-                  <Field className={style.auth_input} type="password" name="password" placeholder="Password" />
-                  <ErrorMessage className={style.input_error} name="password" component="div" />
-                </div>
                 {location.pathname === "/registration" ? (
                   <>
                     {" "}
-                    <div className={style.form_group_last}>
-                      <Field className={style.auth_input} name="username" placeholder="Name" />
+                    <div className={style.form_group_item}>
+                      <Field className={style.auth_input} name="username" placeholder="Имя *" />
                       <ErrorMessage className={style.input_error} name="username" component="div" />
                     </div>
                   </>
                 ) : null}
+                <div className={style.form_group_item}>
+                  <Field className={style.auth_input} type="email" name="email" placeholder="Почта *" />
+                  <ErrorMessage className={style.input_error} name="email" component="div" />
+                </div>
+                <div className={style.form_group_last}>
+                  <Field
+                    className={style.auth_input}
+                    type={showPassword ? "text" : "password"}
+                    name="password"
+                    placeholder="Пароль *"
+                  />
+                  <button onClick={toggleShowPassword} className={style.button_eye_icon}>
+                    {showPassword ? (
+                      <svg className={style.eye_icon}>
+                        <use href={`${svg}#icon-eye`}></use>
+                      </svg>
+                    ) : (
+                      <svg className={style.eye_icon}>
+                        <use href={`${svg}#icon-eye-hidden`}></use>
+                      </svg>
+                    )}
+                  </button>
+
+                  <ErrorMessage className={style.input_error} name="password" component="div" />
+                </div>
               </div>
 
               <div className={style.button_container}>
                 <button className={style.auth_button} type="submit" disabled={isSubmitting}>
                   {location.pathname === "/registration" ? "зарегистрироваться" : "Bход"}
                 </button>
+                {location.pathname === "/registration" ? (
+                  <Link to="/login" className={style.auth_link}>
+                    {location.pathname === "/registration" ? "Быстрей худеть" : "Хочу зарегистрироваться"}
+                  </Link>
+                ) : (
+                  <Link to="/registration" className={style.auth_link}>
+                    {location.pathname === "/registration" ? "Уже есть аккаунт" : "Хочу зарегистрироваться"}
+                  </Link>
+                )}
               </div>
             </Form>
           )}

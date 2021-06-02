@@ -1,20 +1,76 @@
 import { combineReducers, createReducer } from "@reduxjs/toolkit";
-import { create } from "yup/lib/array";
+
 import { setUserLoading, loginSuccess, logOutSuccess } from "../auth/authActions";
-import {addProductSuccess, fetchProductSuccess} from "../products/productAction";
+import { AuthDailyRateSuccess } from "../dailyRate/dailyRateActions";
+import { addProductSuccess, fetchProductSuccess } from "../products/productAction";
 import { getUserError, getUserSuccess, resetError, setError } from "./userActions";
 
-const userDataReducer = createReducer(
+const userInfoReducer = createReducer(
   {},
 
   {
-    [loginSuccess]: (_, { payload }) => ({
-      ...payload.user
+    [loginSuccess]: (
+      _,
+      {
+        payload: {
+          user: { username, email, id }
+        }
+      }
+    ) => ({
+      username,
+      email,
+      id
     }),
     [logOutSuccess]: () => ({}),
-    [getUserSuccess]: (_, { payload }) => payload
+    [getUserSuccess]: (_, { payload: { username, email, id } }) => ({
+      username,
+      email,
+      id
+    })
   }
 );
+
+const userDataReducer = createReducer(
+  {},
+  {
+    [loginSuccess]: (
+      _,
+      {
+        payload: {
+          user: {
+            userData: { weight, height, age, bloodType, desiredWeight, dailyRate }
+          }
+        }
+      }
+    ) => ({
+      weight,
+      height,
+      age,
+      bloodType,
+      desiredWeight,
+      dailyRate
+    }),
+    [getUserSuccess]: (
+      _,
+      {
+        payload: {
+          userData: { weight, height, age, bloodType, desiredWeight, dailyRate }
+        }
+      }
+    ) => ({
+      weight,
+      height,
+      age,
+      bloodType,
+      desiredWeight,
+      dailyRate
+    })
+    // [AuthDailyRateSuccess]: (_, { payload: { dailyRate } }) => ({
+    //   dailyRate
+    // })
+  }
+);
+
 const userLoaderReducer = createReducer(false, {
   [setUserLoading]: state => !state
 });
@@ -24,14 +80,11 @@ const userErrorReducer = createReducer("", {
   [resetError]: () => "",
   [getUserError]: (_, { payload }) => payload
 });
-const notAllowedReducer = createReducer([], {
-  [getUserSuccess]: (_, { payload }) => payload.userData.notAllowedProducts
-});
 
-const daysReducer = createReducer([], {
-  [getUserSuccess]: (_, { payload }) => payload.userData.days,
-  [addProductSuccess]: (state, { payload }) => [...state, payload.day],
-  [fetchProductSuccess]: (state, { payload }) => [...state, payload.day]
+const notAllowedReducer = createReducer([], {
+  [getUserSuccess]: (_, { payload }) => payload.userData.notAllowedProducts,
+  [loginSuccess]: (_, { payload }) => payload.user.userData.notAllowedProducts,
+  [AuthDailyRateSuccess]: (_, { payload }) => payload.notAllowedProducts
 });
 
 // const dailyRateReducer = createReducer([], {
@@ -39,12 +92,12 @@ const daysReducer = createReducer([], {
 // });
 
 const userReducers = combineReducers({
-  data: userDataReducer,
+  data: userInfoReducer,
   isLoadind: userLoaderReducer,
   error: userErrorReducer,
-  notAllowedProducts: notAllowedReducer,
-  days: daysReducer
-  // dailyRate:dailyRateReducer
+  notAllowedProducts: notAllowedReducer, //____________SPROSIT U TOPOLYA GDE ZHIVET LYUBIMAYA !!!!!!!!!!!!!!!!!!
+  userData: userDataReducer
+  // dailyRate: dailyRateReducer
 });
 
 export default userReducers;

@@ -1,4 +1,4 @@
-@media screen and (min-width: 480px) {
+@media screen and (min-width: 320px) {
   .mainBox{
     background-color: #F0F1F3;;
     padding-top: 40px;
@@ -18,6 +18,8 @@
 }
 
 .kcalList{
+
+
 font-family: Verdana;
 font-style: normal;
 font-weight: normal;
@@ -31,6 +33,8 @@ margin-top: 20px;
 }
 
 .productList{
+    overflow-y: scroll;
+  height: 112px;
     font-family: Verdana;
     font-style: normal;
     font-weight: normal;
@@ -99,7 +103,8 @@ margin-top: 40px;
 
 
 @media screen and (min-width: 1280px) {
-  .mainBox {
+  .mainBox {  
+    width: 50%;
     display: block;
     padding-top: 146px;
     padding-bottom: 189px;

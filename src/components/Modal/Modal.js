@@ -1,15 +1,30 @@
-import React, { Component } from "react";
+import React, { Component, createRef } from "react";
 import styles from "../Modal/Modal.module.css";
 import DailyRateModal from "../DailyRateForm/DailyRateModal";
 import sprite from "../../images/symbol-defs.svg";
+import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks } from "body-scroll-lock";
 
 class Modal extends Component {
+  ref = createRef();
   componentDidMount() {
+    console.log(this.ref.current);
     window.addEventListener("keydown", this.closeModal);
   }
 
+  componentDidUpdate(prevProps) {
+    if (prevProps.showModal !== this.props.showModal) {
+      if (this.ref.current) {
+        if (this.props.showModal) {
+          disableBodyScroll(this.ref.current);
+        } else {
+          enableBodyScroll(this.ref.current);
+        }
+      }
+    }
+  }
+
   componentWillUnmount() {
-    this.removeScroll();
+    clearAllBodyScrollLocks();
     window.removeEventListener("keydown", this.closeModal);
   }
 
@@ -40,16 +55,16 @@ class Modal extends Component {
     return (
       <>
         <div id="overlay" className={showModal ? styles.overlay : styles.notShow} onClick={this.closeOverlay}>
-          <div className={styles.modal}>
+          <div className={styles.modal} ref={this.ref}>
             <button type="button" onClick={onModalToggle} className={styles.closeBtn}>
+              <span className={styles.goBackSvg}>
+                <svg  width="20" height="20">
+                  <use href={sprite + "#icon-arrow"} />
+                </svg>
+              </span>
               <span className={styles.closeSvg}>
                 <svg width="12" height="12">
                   <use href={sprite + "#icon-close"} />
-                </svg>
-              </span>
-              <span>
-                <svg className={styles.goBackSvg} width="20" height="20">
-                  <use href={sprite + "#icon-arrow"} />
                 </svg>
               </span>
             </button>

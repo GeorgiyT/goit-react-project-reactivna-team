@@ -10,7 +10,7 @@
 }
 
 .input {
-  width: 240px;
+  width: 100%;
   margin-bottom: 30px;
   border: 0;
   border-bottom: 1px solid rgba(224, 224, 224, 1);
@@ -22,8 +22,10 @@
   position: relative;
 }
 
-.wrapper_input{
-    width: 240px;
+.wrapper_input {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
 .label_value {
@@ -82,8 +84,6 @@
 .wrapper_form {
   margin-bottom: 40px;
 }
-
-
 
 .radio_wrapper {
   width: 240px;
@@ -152,6 +152,9 @@ input[type="radio"]:checked + label:after {
 }
 
 @media screen and (min-width: 768px) {
+  .input{
+ width: 239px;
+  }
   .title_form {
     width: 605px;
     font-size: 30px;
@@ -171,13 +174,13 @@ input[type="radio"]:checked + label:after {
   .btn_form {
     margin: 0;
   }
-  .radio_title{
-      margin-bottom: 19px;
+  .radio_title {
+    margin-bottom: 19px;
   }
 }
 
 @media screen and (min-width: 1280px) {
-   .title_form  {
+  .title_form {
     font-size: 34px;
     margin: 137px 0 68px 0;
   }

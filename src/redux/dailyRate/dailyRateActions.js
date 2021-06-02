@@ -8,4 +8,4 @@ export const AuthDailyRateRequest = createAction('dailyRate/AuthDailyRateRequest
 export const AuthDailyRateSuccess = createAction('dailyRate/AuthDailyRateSuccess');
 export const AuthDailyRateError = createAction('dailyRate/AuthDailyRateError');
 
-export const changeFilter = createAction('dailyRate/changeFilter');
+
