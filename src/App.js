@@ -1,6 +1,7 @@
 import { Suspense, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Switch } from "react-router";
+import BackGround from "./components/BackGround/BackGround";
 import Header from "./components/Header/Header";
 import { IsLoader } from "./components/Loader/IsLoader";
 import { isAuthenticatedSelector } from "./redux/auth/authSelectors";
@@ -19,9 +20,9 @@ function App() {
   return (
     <Suspense fallback={<IsLoader/>}>
       <Header />
-
+      {!isAuth ? <BackGround /> : ""}
       <Switch>
-        {routes.map(route =>
+        {routes.map((route) =>
           route.private ? (
             <PrivateRoute {...route} key={route.path} isAuth={isAuth} />
           ) : (

@@ -3,11 +3,13 @@ import s from "./LoginHeader.module.css";
 import { NavLink } from "react-router-dom";
 import logo from "../../../images/header/logo.png";
 
+
 export default function LoginHeader() {
   return (
     <div className={s.header}>
+
       <a href="/" className={s.logo}>
-        <img src={logo} />
+        <img src={logo} className={s.logo__image}/>
         <span className={s.logo__text}>
           Slim<span className={s.logo__text__color}>Mom</span>
         </span>
