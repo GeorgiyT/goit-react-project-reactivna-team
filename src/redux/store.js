@@ -30,12 +30,12 @@ const store = configureStore({
   reducer: {
     auth: persistReducer(authPersitConfig, authReducer),
     user: userReducers,
-    products: productReduser,
-    dailyRate: itemsReducer,
-    date: dateReducer,
-    days: daysReducer,
+    // products: productReduser,
+    // dailyRate: itemsReducer,
+    // date: dateReducer,
+    // days: daysReducer,
     currentDay: currentDay,
-    isLoding: loader,
+    isLoding: loader
   },
   middleware
 });

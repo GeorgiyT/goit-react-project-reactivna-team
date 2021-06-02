@@ -22,18 +22,14 @@ const dailyRateState = {
 
 const itemsReducer = createReducer(dailyRateState, {
   [getDailyRateSuccess]: (_, { payload }) => payload,
-  [productAction.addProductSuccess]: (state, { payload }) =>
-  
-  ({
-    ...state, summaries: [...state.summaries, payload.daySummary]
-    
+  [productAction.addProductSuccess]: (state, { payload }) => ({
+    ...state,
+    summaries: [...state.summaries, payload.daySummary]
   }),
-  [fetchProductSuccess]: (state, { payload }) => 
-  ({
-    ...state, summaries: [...state.summaries, payload.daySummary]
-    
-  }),
-}
-);
+  [fetchProductSuccess]: (state, { payload }) => ({
+    ...state,
+    summaries: [...state.summaries, payload.daySummary]
+  })
+});
 
-export default itemsReducer;
+// export default itemsReducer;
