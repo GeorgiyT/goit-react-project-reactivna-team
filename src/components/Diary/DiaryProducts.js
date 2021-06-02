@@ -1,17 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import DiaryProductList from "./DiaryProducts/DiaryProductList/DiaryProductList";
 import s from "./DiaryProducts.module.css";
 import productOperation from "../../redux/products/productOperation";
-import { connect } from "react-redux";
+import { connect, useSelector } from "react-redux";
 import productSelector from "../../redux/products/productSelector";
 import DiaryProdustListItem from "./DiaryProducts/DiaryProdustListItem/DiaryProdustListItem";
-// import s from '../Diary/DiaryProducts/DiaryProdustListItem/DiaryProdustListItem.module.css'
 import style from "./DiaryProducts/DiaryProductList/DiaryProductList.module.css"
 import sprite from "../../images/symbol-defs.svg"
-import Modal from '../Diary/DiaryProducts/DiaryProductList/AddProductModal'
-const DiaryProducts = ({ products, data, toFetchProducts }) => {
+import Modal from "../Modal/Modal";
+
+
+const DiaryProducts = ({ products, data, toFetchProducts,openModal }) => {
   console.log(products, "products");
 
+  const [showModal, setShowModal] = useState(false);
+//  const isLoding = useSelector(loader)
+
+  const toggleModal = () => {
+    setShowModal((prevState) => !prevState.showModal);
+  };
+
+  const modalClose = () => {
+    setShowModal(false);
+  };
 
   
 
@@ -33,7 +44,13 @@ const DiaryProducts = ({ products, data, toFetchProducts }) => {
         </ul>
 
       )}
-      <button 
+      <div>
+        <Modal onModalToggle={modalClose} showModal={showModal}>
+            <DiaryProductList/>
+        </Modal>
+      </div>
+      <button
+        onClick={toggleModal}
         className={style.bu} type="submit">
             <svg className={style.icon}>
               <use href={sprite + "#icon-plus"} />
