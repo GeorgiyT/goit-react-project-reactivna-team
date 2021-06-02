@@ -4,8 +4,8 @@ import s from "./DiaryProductList.module.css";
 import sprite from "../../../../images/symbol-defs.svg";
 import { connect } from "react-redux";
 import productOperation from "../../../../redux/products/productOperation";
-import axios from "axios";
 import DiaryListProduct from "../../DiaryListProduct";
+import axiosInstance from "../../../../utils/axiosInstance";
 
 class DiaryProductList extends Component {
   state = {
@@ -71,7 +71,7 @@ class DiaryProductList extends Component {
     )
     
       return;
-    axios
+    axiosInstance
       .get(`/product?search=${query}`,{
         headers: { Authorization: `Bearer ${this.props.token}` }
         

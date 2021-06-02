@@ -1,4 +1,4 @@
-import axios from "axios";
+import axiosInstance from "../../utils/axiosInstance";
 import {
   AuthDailyRateError,
   AuthDailyRateRequest,
@@ -11,7 +11,7 @@ import {
 const getDailyRateOperation = values => async dispatch => {
   dispatch(getDailyRateRequest());
   try {
-    const response = await axios.post(`https://slimmom-backend.herokuapp.com/daily-rate`, values);
+    const response = await axiosInstance.post(`/daily-rate`, values);
     console.log(response);
     dispatch(getDailyRateSuccess(response.data));
   } catch (error) {
@@ -22,7 +22,7 @@ const getDailyRateOperation = values => async dispatch => {
 const AuthDailyRateOperation = values => async (dispatch, getState) => {
   dispatch(AuthDailyRateRequest());
   try {
-    const response = await axios.post(`https://slimmom-backend.herokuapp.com/daily-rate/${getState().user.data.id}`, values);
+    const response = await axiosInstance.post(`/daily-rate/${getState().user.data.id}`, values);
     dispatch(AuthDailyRateSuccess(response.data));
   } catch (error) {
     dispatch(AuthDailyRateError(error));

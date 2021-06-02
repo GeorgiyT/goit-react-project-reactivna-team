@@ -1,11 +1,11 @@
-import axios from "axios";
+import axiosInstance from "../../utils/axiosInstance";
 
 const token = {
   set(token) {
-    axios.defaults.headers.Authorization = `Bearer ${token}`;
+    axiosInstance.defaults.headers.Authorization = `Bearer ${token}`;
   },
   unset() {
-    axios.defaults.headers.Authorization = `Bearer `;
+    axiosInstance.defaults.headers.Authorization = `Bearer `;
   }
 };
 

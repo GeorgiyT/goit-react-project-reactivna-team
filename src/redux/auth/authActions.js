@@ -13,6 +13,8 @@ export const logOutSuccess = createAction("auth/logOutSuccess");
 export const logOutError = createAction("auth/logOutError");
 export const setUserLoading = createAction("auth/setUserLoading");
 
+export const updateAccessToken = createAction("auth/updateAccessToken");
+
 //____________________ASK ABOUT REFRESH___________
 
 export const refreshUserRequest = createAction("auth/refreshUserRequest");
