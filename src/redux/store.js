@@ -33,7 +33,6 @@ const store = configureStore({
     user: userReducers,
     products: productReduser,
     dailyRate: itemsReducer,
-    // calendar: new Date(),
     date: dateReducer,
     days: daysReducer,
     currentDay: currentDay,
