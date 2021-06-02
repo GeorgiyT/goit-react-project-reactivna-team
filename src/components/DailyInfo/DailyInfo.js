@@ -6,6 +6,7 @@ import {
   percentsOfDailyRateSelector,
   kcalConsumedSelector,
   kcalLeftSelector,
+  dateSelector,
 } from "../../redux/dailyInfo/dailyInfoSelector";
 
 import {
@@ -24,10 +25,12 @@ export default function DailyInfo() {
   const kcalLeft = useSelector(kcalLeftSelector);
   const kcalConsumed = useSelector(kcalConsumedSelector);
   const percentsOfDailyRate = useSelector(percentsOfDailyRateSelector);
+  const date = useSelector(dateSelector);
+
   return (
     <div className={mainBox}>
       <div className={dayBox}>
-        <span className={title}>Сводка за 20.06.2020</span>
+        <span className={title}>Сводка за {date}</span>
         <ul className={kcalList}>
           <li className={kcalItem}>
             <span>Осталось</span>
@@ -43,7 +46,7 @@ export default function DailyInfo() {
           </li>
           <li className={kcalItem}>
             <span>n% от нормы</span>
-            <span>{percentsOfDailyRate} ккал</span>
+            <span>{Math.round(percentsOfDailyRate)}%</span>
           </li>
         </ul>
       </div>
