@@ -6,11 +6,9 @@ import loader from "../../redux/loader/loaderSelectors";
 import { IsLoader } from '../../components/Loader/IsLoader'
 import DailyRateModal from "../../components/DailyRateForm/DailyRateModal";
 
-
 export default function MainPages() {
 const [showModal, setShowModal] = useState(false);
  const isLoding = useSelector(loader)
-
   const toggleModal = () => {
     setShowModal((prevState) => !prevState.showModal);
   };
@@ -27,6 +25,5 @@ const [showModal, setShowModal] = useState(false);
         </Modal >
       {isLoding && <IsLoader/>}
       </div>
-     
   );
 }

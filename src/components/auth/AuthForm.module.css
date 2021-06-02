@@ -88,17 +88,74 @@
   background-color: transparent;
   border-radius: 50%;
 }
-
+.error {
+  position: absolute;
+  top: 28px;
+  left: 0;
+  color: #e11616;
+  font-size: 15px;
+}
 .button_eye_icon {
   position: absolute;
-  top: -5px;
+  top: -24px;
   right: 3px;
   border-radius: 50%;
   border: none;
   background-color: transparent;
 }
+.input {
+  padding-left: 0;
+  padding-right: 0;
+  margin-bottom: 60px;
+  width: 100%;
+  border: 0;
+  border-bottom: 1px solid #e0e0e0;
+  background: rgba(255, 255, 255, 0.2);
+}
 
-.auth_input {
+.input:focus {
+  outline: none;
+}
+
+.input:not(:placeholder-shown) ~ .name {
+  top: -30px;
+  font-size: 12px;
+}
+
+.inputPass {
+  composes: input;
+  margin-bottom: 60px;
+}
+
+.inputPass:not(:placeholder-shown) ~ .name {
+  top: -30px;
+  font-size: 12px;
+  transition: 0.3s;
+}
+.errorInput {
+  background-color: #e1161613;
+  border-bottom: 1px solid #e11616;
+}
+.label {
+  position: relative;
+}
+
+.name {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  left: 0;
+  top: -20px;
+  font-family: Verdana;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.21;
+  letter-spacing: 0.04em;
+  color: #9b9faa;
+  transition: 0.3s;
+}
+
+/* .auth_input {
   width: 100%;
   border: none;
   border-bottom: 1px solid #e0e0e0;
@@ -111,7 +168,7 @@
 }
 .input_error {
   color: #9b9faa;
-}
+} */
 .form_group_last {
   position: relative;
 }
@@ -158,8 +215,8 @@
 
   .button_eye_icon {
     position: absolute;
-    top: -5px;
-    right: 140px;
+    top: -24px;
+    right: 4px;
     border-radius: 50%;
     border: none;
     background-color: transparent;
@@ -177,8 +234,8 @@
   }
   .button_eye_icon {
     position: absolute;
-    top: -5px;
-    right: 140px;
+    top: -24px;
+    right: 4px;
     border-radius: 50%;
     border: none;
     background-color: transparent;
