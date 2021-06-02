@@ -1,13 +1,13 @@
-
-.header{
+.header {
   font-family: Gotham Pro;
 }
 .navigations {
   padding-left: 0px;
   display: flex;
   list-style: none;
-  margin-right: 0px;
+  margin-right: 8px;
   margin-left: auto;
+  margin-top: 2px;
 }
 .navigations__item {
   margin-right: 15px;
@@ -21,7 +21,7 @@
 .logo {
   align-items: center;
   display: flex;
-  margin: 18px 0px 18px 15px;
+  margin: 14px 0px 13px 27px;
   text-decoration: none;
 }
 .logo__image {
@@ -33,6 +33,12 @@
 }
 .logo__text__color {
   color: #fc842d;
+}
+.navigations__item {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  text-transform: uppercase;
 }
 .default {
   color: #9b9faa;
