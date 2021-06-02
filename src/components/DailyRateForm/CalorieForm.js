@@ -37,7 +37,7 @@ export default function CalorieForm({ openModal }) {
     return values;
   };
   return (
-    <div>
+    
       <Formik
         enableReinitialize
         validationSchema={validationSchema}
@@ -153,6 +153,6 @@ export default function CalorieForm({ openModal }) {
           </Form>
         )}
       </Formik>
-    </div>
+    
   );
 }
