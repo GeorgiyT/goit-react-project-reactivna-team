@@ -2,6 +2,7 @@ import { Suspense, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Switch } from "react-router";
 import Header from "./components/Header/Header";
+import { IsLoader } from "./components/Loader/IsLoader";
 import { isAuthenticatedSelector } from "./redux/auth/authSelectors";
 import { getUserOperation } from "./redux/user/userOperation";
 import PrivateRoute from "./routes/PrivateRoute";
@@ -16,7 +17,7 @@ function App() {
     isAuth && dispatch(getUserOperation());
   }, [isAuth, dispatch]);
   return (
-    <Suspense fallback="Loading...">
+    <Suspense fallback={<IsLoader/>}>
       <Header />
 
       <Switch>

@@ -10,6 +10,7 @@ import itemsReducer from "./dailyRate/dailyRateReducer";
 import userReducers from "./user/userReducer";
 import dateReducer from "./calendar/calendarReducer";
 import { daysReducer } from "./day/dayReducer";
+import loader from "./loader/loaderReducer";
 
 const middleware = [
   ...getDefaultMiddleware({
@@ -35,7 +36,8 @@ const store = configureStore({
     // calendar: new Date(),
     date: dateReducer,
     days: daysReducer,
-    currentDay: currentDay
+    currentDay: currentDay,
+    isLoding: loader,
   },
   middleware
 });

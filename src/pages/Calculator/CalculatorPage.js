@@ -7,7 +7,7 @@ import { CalculatorPageBox } from "./CalculatorPage.module.css";
 export default function CalculatorPage() {
   return (
     <div className={CalculatorPageBox}>
-    <CalorieForm/>
+      <CalorieForm />
       <DailyInfo />
     </div>
   );
