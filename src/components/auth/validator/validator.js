@@ -7,8 +7,8 @@ import * as yup from "yup";
 // });
 
 let schema = yup.object().shape({
-  email: yup.string().email("Invalid email address").required("Required"),
-  password: yup.string().required("Please Enter your password").min(6, "min 6 characters").max(12, "max 12 characters")
+  email: yup.string().email("Invalid email address").required("Обязательная строка"),
+  password: yup.string().required("Пожалуйста, введите пароль").min(6, "min 6 characters").max(12, "max 12 characters")
 });
 
 export default schema;
