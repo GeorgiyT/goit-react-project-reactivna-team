@@ -1,16 +1,29 @@
 import React from "react";
+import { useSelector } from "react-redux";
+import {
+  notProductsSelector,
+  calSelector,
+  percentsOfDailyRateSelector,
+  kcalConsumedSelector,
+  kcalLeftSelector,
+} from "../../redux/dailyInfo/dailyInfoSelector";
+
 import {
   dayBox,
   mainBox,
   title,
   kcalList,
   productList,
-  productItem,
   kcalItem,
   productBox,
 } from "./DailyInfo.module.css";
 
 export default function DailyInfo() {
+  const dailyKcal = useSelector(calSelector);
+  const notAllowedProducts = useSelector(notProductsSelector);
+  const kcalLeft = useSelector(kcalLeftSelector);
+  const kcalConsumed = useSelector(kcalConsumedSelector);
+  const percentsOfDailyRate = useSelector(percentsOfDailyRateSelector);
   return (
     <div className={mainBox}>
       <div className={dayBox}>
@@ -18,31 +31,32 @@ export default function DailyInfo() {
         <ul className={kcalList}>
           <li className={kcalItem}>
             <span>Осталось</span>
-            <span>000 ккал</span>
+            <span>{kcalLeft} ккал</span>
           </li>
           <li className={kcalItem}>
             <span>Употреблено</span>
-            <span>000 ккал</span>
+            <span>{kcalConsumed} ккал</span>
           </li>
           <li className={kcalItem}>
             <span>Дневная норма</span>
-            <span>000 ккал</span>
+            <span>{dailyKcal} ккал</span>
           </li>
           <li className={kcalItem}>
             <span>n% от нормы</span>
-            <span>000 ккал</span>
+            <span>{percentsOfDailyRate} ккал</span>
           </li>
         </ul>
       </div>
       <div className={productBox}>
         <span className={title}>Нерекомендуемые продукты</span>
-        <ul className={productList}>
-          <li className={productItem}>Все бульоны/отвары, </li>
-          <li className={productItem}>жирная рыба, </li>
-          <li className={productItem}>икра и мясо, </li>
-          <li className={productItem}>грибы, </li>
-          <li className={productItem}>крупы (пшено, перловая, пшеничная) </li>
-        </ul>
+        {/* <ul className={productList}>
+          {notAllowedProducts.map((product, id) => (
+            <li key={id} className={productItem}>
+              {product}
+            </li>
+          ))}
+          </ul> */}
+        <p className={productList}> {notAllowedProducts.join(", ")}</p>
       </div>
     </div>
   );
