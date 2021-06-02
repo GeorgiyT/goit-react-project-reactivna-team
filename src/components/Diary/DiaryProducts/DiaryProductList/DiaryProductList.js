@@ -94,9 +94,12 @@ class DiaryProductList extends Component {
 
   render() {
     return (
+      <>
+      <DiaryDataCalendar />
       <div className={s.cont}>
-        <DiaryDataCalendar />
-        <form  onSubmit={this.handleSubmit}>
+        
+          <form  onSubmit={this.handleSubmit}>
+            <div className={s.form}>
           <label>
             <input
               className={s.product}
@@ -120,16 +123,19 @@ class DiaryProductList extends Component {
             <svg className={s.icon}>
               <use href={sprite + "#icon-plus"} />
             </svg>
-          </button>
+              </button>
+            </div>
           {this.state.productsQuery.length > 0 && (
-            <DiaryListProduct
+               <DiaryListProduct
               toGetProduct={this.getCurrentProduct}
               prod={this.state.productsQuery}
               
             />
           )}
-        </form>
-      </div>
+          </form>
+          
+        </div>
+        </>
     );
   }
 }

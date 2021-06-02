@@ -2,7 +2,8 @@ import { createReducer } from "@reduxjs/toolkit";
 import productAction from "./productAction";
 
 const toAddProduct = (state, action) => {
-  return [...state,action.payload]
+  // return [...state,action.payload]
+  return action.payload
 };
 
 const toDeleteProduct = (state, { payload }) => {
@@ -20,10 +21,11 @@ export const currentDay = createReducer(
 const products = createReducer(
   [],
   {
-    // [productAction.fetchProductSuccess]: (state, action) => action.payload,
+    [productAction.fetchProductSuccess]: (state, action) => action.payload,
     [productAction.addProductSuccess]: toAddProduct,
     [productAction.deleteProductSuccess]: toDeleteProduct
   }
 );
+
 
 export default products;
