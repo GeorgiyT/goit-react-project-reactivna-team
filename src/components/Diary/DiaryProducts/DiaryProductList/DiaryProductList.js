@@ -17,7 +17,7 @@ class DiaryProductList extends Component {
     productId: "",
     error: "",
     isOpen: true,
-    
+
   };
 
   componentDidMount() {
@@ -29,7 +29,7 @@ class DiaryProductList extends Component {
       console.log(this.state.product);
     }
   }
-  handleChange = (e) => {
+  handleChange = e => {
     const { name, value, id } = e.target;
     console.log(id);
     this.setState({
@@ -42,7 +42,7 @@ class DiaryProductList extends Component {
       });
     }
   };
-  handleSubmit = (e) => {
+  handleSubmit = e => {
     e.preventDefault();
     // console.log(this.props.date);
     // console.log(this.props.date, this.state.productId, this.state.weight);
@@ -53,12 +53,12 @@ class DiaryProductList extends Component {
     );
     this.setState({ product: "" });
   };
-  getCurrentProduct = (e) => {
+  getCurrentProduct = e => {
     this.setState({
       product: e.target.textContent,
       productId: e.target.id,
       productsQuery: [],
-      weight: 100,
+      weight: 100
     });
   };
 
@@ -74,7 +74,7 @@ class DiaryProductList extends Component {
       .get(`/product?search=${query}`, {
         headers: { Authorization: `Bearer ${this.props.token}` },
       })
-      .then((resp) => {
+      .then(resp => {
         this.setState({
           productsQuery: resp.data ? resp.data : [],
         });
@@ -120,6 +120,7 @@ class DiaryProductList extends Component {
               </button>
             </div>
             {this.state.productsQuery.length > 0 && (
+
               <DiaryListProduct
                 toGetProduct={this.getCurrentProduct}
                 prod={this.state.productsQuery}
@@ -150,7 +151,6 @@ class DiaryProductList extends Component {
               Добавить
             </button>
           </div>)}
-         
         </div>
       </>
     );
@@ -160,10 +160,9 @@ const mapStateToProps = (state) => ({
   date: state.date,
   token: state.auth.tokens.accessToken,
 });
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
-    toAddProducts: (data, productId, weight) =>
-      dispatch(productOperation.addProduct(data, productId, weight)),
+    toAddProducts: (data, productId, weight) => dispatch(productOperation.addProduct(data, productId, weight))
     // toFetchProducts: data => dispatch(productOperation.fetchProduct(data)),
   };
 };

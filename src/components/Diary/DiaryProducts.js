@@ -24,25 +24,17 @@ const DiaryProducts = ({ products, data, toFetchProducts,openModal }) => {
     setShowModal(false);
   };
 
-  
-
-
   return (
-    <div className={s. containe}>
+    <div className={s.containe}>
       <DiaryProductList />
 
-      {!products || !(products.length > 0) ? (
-        <h2 className={s.title}> Продукты еще не добавлены</h2>
-      ) : (
-        ""
-      )}
+      {!products || !(products.length > 0) ? <h2 className={s.title}> Продукты еще не добавлены</h2> : ""}
       {products && (
         <ul className={s.listeeeer}>
           {products.map(({ id, ...props }) => (
             <DiaryProdustListItem key={id} id={id} {...props} />
           ))}
         </ul>
-
       )}
       <div>
         <Modal onModalToggle={modalClose} showModal={showModal}>
@@ -59,13 +51,13 @@ const DiaryProducts = ({ products, data, toFetchProducts,openModal }) => {
     </div>
   );
 };
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   products: productSelector.getProducts(state),
-  date: state.date,
+  date: state.date
 });
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
-    toFetchProducts: (data) => dispatch(productOperation.fetchProduct(data)),
+    toFetchProducts: data => dispatch(productOperation.fetchProduct(data))
   };
 };
 
