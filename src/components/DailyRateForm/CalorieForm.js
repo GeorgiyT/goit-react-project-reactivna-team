@@ -14,22 +14,22 @@ export default function CalorieForm({ openModal }) {
   const isAuth = useSelector(isAuthenticatedSelector);
   const validationSchema = Yup.object().shape({
     height: Yup.number()
-      .min(100, "Мінімальне значенння 100 см.")
-      .max(250, "Максимальне значення 250 см.")
-      .required("Обов`язкове"),
-    age: Yup.number().min(18, "Мінімум 18 років").max(100, "Максимум 100 років").required("Обов`язкове"),
-    weight: Yup.number().min(20, "Мінімум 20 кг.").max(500, "Максимум 500 кг.").required("Обов`язкове"),
+      .min(100, "Минимальное значение 100 см.")
+      .max(250, "Максимальное значение 250 см.")
+      .required("Обязательно"),
+    age: Yup.number().min(18, "Минимум 18 лет").max(100, "Максимум 100 лет").required("Обязательно"),
+    weight: Yup.number().min(20, "Минимум 20 кг.").max(500, "Максимум 500 кг.").required("Обязательно"),
     desiredWeight: Yup.number()
-      .min(20, "Мінімум 20 кг.")
+      .min(20, "Минимум 20 кг.")
       .max(500, "Максимум 500 кг.")
-      .required("Обов`язкове")
+      .required("Обязательно")
       .when("weight", (weight, schema) => {
         return schema.test({
           test: desiredWeight => !!weight && desiredWeight < weight,
-          message: "Бажана вага повина бути меншою від поточної"
+          message: "Желаемый вес должен быть меньше текущего"
         });
       }),
-    bloodType: Yup.number().required("Обов`язкове")
+    bloodType: Yup.number().required("Обязательно")
   });
   const getNumbers = values => {
     const keys = Object.keys(values);
@@ -37,7 +37,7 @@ export default function CalorieForm({ openModal }) {
     return values;
   };
   return (
-    
+   
       <Formik
         enableReinitialize
         validationSchema={validationSchema}
@@ -153,6 +153,7 @@ export default function CalorieForm({ openModal }) {
           </Form>
         )}
       </Formik>
+     
     
   );
 }

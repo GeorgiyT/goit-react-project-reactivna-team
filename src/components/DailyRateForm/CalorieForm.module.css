@@ -152,6 +152,9 @@ input[type="radio"]:checked + label:after {
 }
 
 @media screen and (min-width: 768px) {
+  .input{
+ width: 239px;
+  }
   .title_form {
     width: 605px;
     font-size: 30px;
