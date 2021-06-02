@@ -26,7 +26,6 @@ export default function DailyInfo() {
   const kcalConsumed = useSelector(kcalConsumedSelector);
   const percentsOfDailyRate = useSelector(percentsOfDailyRateSelector);
   const date = useSelector(dateSelector);
-
   return (
     <div className={mainBox}>
       <div className={dayBox}>
@@ -34,7 +33,7 @@ export default function DailyInfo() {
         <ul className={kcalList}>
           <li className={kcalItem}>
             <span>Осталось</span>
-            <span>{kcalLeft} ккал</span>
+           <span>{kcalLeft} ккал</span>
           </li>
           <li className={kcalItem}>
             <span>Употреблено</span>
@@ -46,19 +45,14 @@ export default function DailyInfo() {
           </li>
           <li className={kcalItem}>
             <span>n% от нормы</span>
+
             <span>{Math.round(percentsOfDailyRate)}%</span>
+
           </li>
         </ul>
       </div>
       <div className={productBox}>
         <span className={title}>Нерекомендуемые продукты</span>
-        {/* <ul className={productList}>
-          {notAllowedProducts.map((product, id) => (
-            <li key={id} className={productItem}>
-              {product}
-            </li>
-          ))}
-          </ul> */}
         <p className={productList}> {notAllowedProducts.join(", ")}</p>
       </div>
     </div>
