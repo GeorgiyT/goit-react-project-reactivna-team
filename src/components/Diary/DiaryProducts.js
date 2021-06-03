@@ -8,9 +8,8 @@ import DiaryProdustListItem from "./DiaryProducts/DiaryProdustListItem/DiaryProd
 import style from "./DiaryProducts/DiaryProductList/DiaryProductList.module.css";
 import sprite from "../../images/symbol-defs.svg";
 import Modal from "../Modal/Modal";
-import AddProductModal from './DiaryProducts'
-
-
+import AddProductModal from "./DiaryProducts";
+import AddForm from "./DiaryProducts/DiaryProductList/AddForm";
 
 const DiaryProducts = ({ products, data, toFetchProducts, openModal }) => {
   console.log(products, "products");
@@ -19,11 +18,7 @@ const DiaryProducts = ({ products, data, toFetchProducts, openModal }) => {
   //  const isLoding = useSelector(loader)
 
   const toggleModal = () => {
-    setShowModal((prevState) => !prevState.showModal);
-  };
-
-  const modalClose = () => {
-    setShowModal(false);
+    setShowModal((prevState) => !prevState);
   };
 
   return (
@@ -43,13 +38,15 @@ const DiaryProducts = ({ products, data, toFetchProducts, openModal }) => {
           ))}
         </ul>
       )}
-      <div>
-        <Modal onModalToggle={modalClose} showModal={showModal}>
-          {/* <DiaryProductList /> */}
-          <AddProductModal/>
+      {/* ====================== */}
+      {showModal && (
+        <Modal onModalToggle={toggleModal} showModal={showModal}>
+          <AddForm toggleModal={toggleModal} />
         </Modal>
-      </div>
-      <button onClick={toggleModal} className={style.bu} type="submit">
+      )}
+      {/* ..................... */}
+
+      <button onClick={toggleModal} className={style.bu} type='submit'>
         <svg className={style.icon}>
           <use href={sprite + "#icon-plus"} />
         </svg>

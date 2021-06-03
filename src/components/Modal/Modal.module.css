@@ -1,5 +1,5 @@
-/* .overlay {
-    top: 104px;
+.overlay {
+  top: 104px;
   position: fixed;
   left: 0;
   right: 0;
@@ -8,7 +8,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color:rgba(33, 33, 33, 0.12);;
+  background-color: rgba(33, 33, 33, 0.12);
   bottom: 0;
 }
 .notShow {
@@ -28,7 +28,7 @@
 }
 
 .modal {
-   top: 138px;
+  top: 138px;
   position: fixed;
   width: 100%;
   padding: 40px 15px 80px;
@@ -59,7 +59,7 @@
     width: 594px;
     height: 580px;
     padding: 64px 42px 68px;
-     top: 244px;
+    top: 244px;
   }
   .overlay {
     top: 0;
@@ -71,8 +71,8 @@
   .closeSvg {
     display: block;
   }
-  .closeBtn{
-      left: 530px;
+  .closeBtn {
+    left: 530px;
   }
 }
 @media screen and (min-width: 1280px) {
@@ -82,8 +82,8 @@
     padding: 64px 90px 81px;
     top: 135px;
   }
-  .closeBtn{
-      left: 620px;
+  .closeBtn {
+    left: 620px;
   }
 }
 .enter {
@@ -103,4 +103,4 @@
   opacity: 0;
   transform: scale(0.3);
   transition: all 300ms linear;
-} */
+}
