@@ -26,7 +26,6 @@ const AuthForm = () => {
           initialValues={{ email: "", password: "", username: "" }}
           validationSchema={schema}
           onSubmit={values => {
-            console.log(location);
             location.pathname === "/registration"
               ? dispatch(registerOperation({ ...values, username: values.username || values.email }, history))
               : dispatch(loginOperation({ email: values.email, password: values.password }));
@@ -107,8 +106,7 @@ const AuthForm = () => {
 
 export default AuthForm;
 
-{
-  /* <div className={style.form_group_item}>
+/* <div className={style.form_group_item}>
                   <Field className={style.auth_input} type="email" name="email" placeholder="Почта *" />
                   <ErrorMessage className={style.input_error} name="email" component="div" />
                 </div>
@@ -133,4 +131,3 @@ export default AuthForm;
 
                   <ErrorMessage className={style.input_error} name="password" component="div" />
                 </div> */
-}

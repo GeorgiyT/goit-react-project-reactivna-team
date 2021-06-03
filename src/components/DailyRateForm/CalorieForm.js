@@ -50,13 +50,18 @@ export default function CalorieForm({ openModal }) {
         bloodType: userData && userData.bloodType ? userData.bloodType.toString() : ""
       }}
       onSubmit={values => {
-        isAuth ? dispatch(AuthDailyRateOperation(getNumbers(values))) : dispatch(getDailyRateOperation(getNumbers(values)));
-        if (openModal) {
-          setTimeout(() => {
-            openModal();
-          }, 1000);
+        if (isAuth) {
+          dispatch(AuthDailyRateOperation(getNumbers(values)));
+          history.push("/daily-rate");
+        } else {
+          dispatch(getDailyRateOperation(getNumbers(values)));
+
+          if (openModal) {
+            setTimeout(() => {
+              openModal();
+            }, 1000);
+          }
         }
-        history.push("/daily-rate");
       }}
     >
       {({ errors, touched, values }) => (

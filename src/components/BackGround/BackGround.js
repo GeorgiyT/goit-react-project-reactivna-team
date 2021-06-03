@@ -6,8 +6,8 @@ import bgImages from "../../images/bg-images.png";
 export default function BackGround() {
   return (
     <div className={s.bg__container}>
-      <img src={vector} className={s.vector} />
-      <img src={bgImages} className={s.bgImages} />
+      <img src={vector} className={s.vector} alt="SomeImage" />
+      <img src={bgImages} className={s.bgImages} alt="SomeImage" />
     </div>
   );
 }
