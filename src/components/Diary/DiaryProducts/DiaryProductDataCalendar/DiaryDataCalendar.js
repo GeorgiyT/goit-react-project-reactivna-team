@@ -44,6 +44,7 @@ class DiaryDataCalendar extends Component {
     );
   }
 }
+
 const mapDispatchToProps = {
   setData,
   toFetchProducts: productOperation.fetchProduct
