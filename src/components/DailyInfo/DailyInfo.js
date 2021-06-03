@@ -1,4 +1,6 @@
 import React from "react";
+import moment from "moment";
+
 import { useSelector } from "react-redux";
 import {
   notProductsSelector,
@@ -17,7 +19,9 @@ import {
   productList,
   kcalItem,
   productBox,
+  grassClass,
 } from "./DailyInfo.module.css";
+import grass from "../../images/grass-desc-cut.png";
 
 export default function DailyInfo() {
   const dailyKcal = useSelector(calSelector);
@@ -26,14 +30,19 @@ export default function DailyInfo() {
   const kcalConsumed = useSelector(kcalConsumedSelector);
   const percentsOfDailyRate = useSelector(percentsOfDailyRateSelector);
   const date = useSelector(dateSelector);
+  const newDate = new Date(date);
+
   return (
     <div className={mainBox}>
+      <img src={grass} className={grassClass} />
       <div className={dayBox}>
-        <span className={title}>Сводка за {date}</span>
+        <span className={title}>
+          Сводка за {date ? moment(newDate).format("DD.MM.yyyy") : ""}
+        </span>
         <ul className={kcalList}>
           <li className={kcalItem}>
             <span>Осталось</span>
-           <span>{kcalLeft} ккал</span>
+            <span>{kcalLeft} ккал</span>
           </li>
           <li className={kcalItem}>
             <span>Употреблено</span>
@@ -47,7 +56,6 @@ export default function DailyInfo() {
             <span>n% от нормы</span>
 
             <span>{Math.round(percentsOfDailyRate)}%</span>
-
           </li>
         </ul>
       </div>

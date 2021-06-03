@@ -14,7 +14,6 @@ const UserHeader = ({ userNic, logOutFunc }) => {
   };
   return (
     <div className={s.container}>
-      <div className={s.decoration}></div>
       <div className={s.header}>
         <a href="/" className={s.logo}>
           <img src={logo} alt="" />

@@ -23,6 +23,7 @@ class DiaryDataCalendar extends Component {
   //     this.props.toFetchProducts(this.state.date);
   //   }
   // }
+  // openCalendar =
 
   handleTap = (someDate, setSomeDate) => {
     // setSomeDate(someDate);
@@ -43,6 +44,7 @@ class DiaryDataCalendar extends Component {
     );
   }
 }
+
 const mapDispatchToProps = {
   setData,
   toFetchProducts: productOperation.fetchProduct
