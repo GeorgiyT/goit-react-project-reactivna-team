@@ -5,19 +5,18 @@ import productOperation from "../../redux/products/productOperation";
 import { connect, useSelector } from "react-redux";
 import productSelector from "../../redux/products/productSelector";
 import DiaryProdustListItem from "./DiaryProducts/DiaryProdustListItem/DiaryProdustListItem";
-import style from "./DiaryProducts/DiaryProductList/DiaryProductList.module.css"
-import sprite from "../../images/symbol-defs.svg"
+import style from "./DiaryProducts/DiaryProductList/DiaryProductList.module.css";
+import sprite from "../../images/symbol-defs.svg";
 import Modal from "../Modal/Modal";
 
-
-const DiaryProducts = ({ products, data, toFetchProducts,openModal }) => {
+const DiaryProducts = ({ products, data, toFetchProducts, openModal }) => {
   console.log(products, "products");
 
   const [showModal, setShowModal] = useState(false);
-//  const isLoding = useSelector(loader)
+  //  const isLoding = useSelector(loader)
 
   const toggleModal = () => {
-    setShowModal((prevState) => !prevState.showModal);
+    setShowModal(prevState => !prevState.showModal);
   };
 
   const modalClose = () => {
@@ -38,16 +37,14 @@ const DiaryProducts = ({ products, data, toFetchProducts,openModal }) => {
       )}
       <div>
         <Modal onModalToggle={modalClose} showModal={showModal}>
-            <DiaryProductList/>
+          <DiaryProductList />
         </Modal>
       </div>
-      <button
-        onClick={toggleModal}
-        className={style.bu} type="submit">
-            <svg className={style.icon}>
-              <use href={sprite + "#icon-plus"} />
-             </svg>
-              </button> 
+      <button onClick={toggleModal} className={style.bu} type="submit">
+        <svg className={style.icon}>
+          <use href={sprite + "#icon-plus"} />
+        </svg>
+      </button>
     </div>
   );
 };
@@ -55,10 +52,10 @@ const mapStateToProps = state => ({
   products: productSelector.getProducts(state),
   date: state.date
 });
-const mapDispatchToProps = dispatch => {
-  return {
-    toFetchProducts: data => dispatch(productOperation.fetchProduct(data))
-  };
-};
+// const mapDispatchToProps = dispatch => {
+//   return {
+//     toFetchProducts: data => dispatch(productOperation.fetchProduct(data))
+//   };
+// };
 
-export default connect(mapStateToProps, mapDispatchToProps)(DiaryProducts);
+export default connect(mapStateToProps)(DiaryProducts);

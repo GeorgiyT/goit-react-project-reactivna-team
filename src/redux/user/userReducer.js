@@ -6,8 +6,11 @@ import { addProductSuccess, fetchProductSuccess } from "../products/productActio
 import { getUserError, getUserSuccess, resetError, setError } from "./userActions";
 
 const userInfoReducer = createReducer(
-  {},
-
+  {
+    username: "",
+    email: "",
+    id: ""
+  },
   {
     [loginSuccess]: (
       _,
@@ -31,7 +34,14 @@ const userInfoReducer = createReducer(
 );
 
 const userDataReducer = createReducer(
-  {},
+  {
+    weight: 0,
+    height: 0,
+    age: 0,
+    bloodType: 0,
+    desiredWeight: 0,
+    dailyRate: 0
+  },
   {
     [loginSuccess]: (
       _,

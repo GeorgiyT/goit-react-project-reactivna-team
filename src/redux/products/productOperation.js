@@ -11,9 +11,6 @@ const addProduct = (date, productId, weight) => dispatch => {
 };
 
 const fetchProduct = data => (dispatch, getState) => {
-  console.log("====================================");
-  console.log("====================================");
-
   token.set(getState().auth?.tokens?.accessToken);
 
   dispatch(productAction.fetchProductsRequest());

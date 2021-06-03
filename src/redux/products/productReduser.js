@@ -1,4 +1,6 @@
 import { createReducer } from "@reduxjs/toolkit";
+import moment from "moment";
+import { getUserSuccess } from "../user/userActions";
 import productAction from "./productAction";
 
 // const toAddProduct = (state, action) => {
@@ -25,14 +27,23 @@ export const currentDay = createReducer(
     }
   },
   {
+    [getUserSuccess]: (_, { payload }) => {
+      const payloadDay = payload.days.find(day => day.date === moment(new Date()).format("yyyy-MM-DD"));
+
+      return {
+        id: payloadDay?._id,
+        eatenProducts: payloadDay?.eatenProducts,
+        date: payloadDay?.date,
+        daySummary: payloadDay?.daySummary
+      };
+    },
+
     [productAction.fetchProductSuccess]: (state, { payload }) =>
       payload?.id ? payload : { ...state, daySummary: payload, eatenProducts: [], id: "", date: payload.date },
     [productAction.addProductSuccess]: (state, { payload }) => {
       return { ...state, eatenProducts: payload.day.eatenProducts, daySummary: payload.daySummary };
     },
     [productAction.deleteProductSuccess]: (state, { payload }) => {
-      console.log(payload);
-
       return {
         ...state,
         eatenProducts: state.eatenProducts.filter(item => item.id !== payload.eatenProductId),
