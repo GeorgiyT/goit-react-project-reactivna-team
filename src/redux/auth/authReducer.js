@@ -45,6 +45,7 @@ const loaderReducer = createReducer(false, {
 const errorReducer = createReducer("", {
   [registerError]: (_, { payload }) => payload,
   [loginError]: (_, { payload }) => payload,
+  [logOutSuccess]: () => "",
   [logOutError]: (_, { payload }) => payload
 });
 

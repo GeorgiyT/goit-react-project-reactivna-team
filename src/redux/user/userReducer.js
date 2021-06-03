@@ -64,7 +64,8 @@ const userDataReducer = createReducer(
       bloodType,
       desiredWeight,
       dailyRate
-    })
+    }),
+    [logOutSuccess]: () => ({})
     // [AuthDailyRateSuccess]: (_, { payload: { dailyRate } }) => ({
     //   dailyRate
     // })

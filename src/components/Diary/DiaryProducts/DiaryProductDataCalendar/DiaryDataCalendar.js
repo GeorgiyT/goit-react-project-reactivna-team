@@ -23,6 +23,7 @@ class DiaryDataCalendar extends Component {
   //     this.props.toFetchProducts(this.state.date);
   //   }
   // }
+  // openCalendar =
 
   handleTap = (someDate, setSomeDate) => {
     // setSomeDate(someDate);

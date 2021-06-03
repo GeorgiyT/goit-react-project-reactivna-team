@@ -28,12 +28,12 @@ const AuthForm = () => {
           onSubmit={values => {
             console.log(location);
             location.pathname === "/registration"
-              ? dispatch(registerOperation(values, history))
+              ? dispatch(registerOperation({ ...values, username: values.username || values.email }, history))
               : dispatch(loginOperation({ email: values.email, password: values.password }));
           }}
         >
           {(
-            { onSubmit, errors, touched } ///___esli proizoshel subbmit
+            {  errors, touched } ///___esli proizoshel subbmit
           ) => (
             <Form className={style.auth_form}>
               <div className={style.form_group}>
