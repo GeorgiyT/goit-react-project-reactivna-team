@@ -6,8 +6,9 @@ import { connect } from "react-redux";
 import productOperation from "../../../../redux/products/productOperation";
 import DiaryListProduct from "../../DiaryListProduct";
 import axiosInstance from "../../../../utils/axiosInstance";
-import style from './Modal.module.css'
-
+import style from "./Modal.module.css";
+import Modal from "../../../Modal/Modal";
+import ModalDiary from "../../ModalDiary";
 
 class DiaryProductList extends Component {
   state = {
@@ -16,8 +17,7 @@ class DiaryProductList extends Component {
     productsQuery: [],
     productId: "",
     error: "",
-    isOpen: true,
-
+    showModal: false,
   };
 
   componentDidMount() {
@@ -29,7 +29,11 @@ class DiaryProductList extends Component {
       console.log(this.state.product);
     }
   }
-  handleChange = e => {
+  toggleModal = () => {
+    this.setState((prev) => ({ showModal: !prev.showModal }));
+  };
+
+  handleChange = (e) => {
     const { name, value, id } = e.target;
     console.log(id);
     this.setState({
@@ -42,7 +46,7 @@ class DiaryProductList extends Component {
       });
     }
   };
-  handleSubmit = e => {
+  handleSubmit = (e) => {
     e.preventDefault();
     // console.log(this.props.date);
     // console.log(this.props.date, this.state.productId, this.state.weight);
@@ -53,12 +57,12 @@ class DiaryProductList extends Component {
     );
     this.setState({ product: "" });
   };
-  getCurrentProduct = e => {
+  getCurrentProduct = (e) => {
     this.setState({
       product: e.target.textContent,
       productId: e.target.id,
       productsQuery: [],
-      weight: 100
+      weight: 100,
     });
   };
 
@@ -74,7 +78,7 @@ class DiaryProductList extends Component {
       .get(`/product?search=${query}`, {
         headers: { Authorization: `Bearer ${this.props.token}` },
       })
-      .then(resp => {
+      .then((resp) => {
         this.setState({
           productsQuery: resp.data ? resp.data : [],
         });
@@ -90,44 +94,61 @@ class DiaryProductList extends Component {
   render() {
     return (
       <>
-        <DiaryDataCalendar />
-        <div className={s.cont}>
-          <form onSubmit={this.handleSubmit}>
-            <div className={s.form}>
-              <label>
-                <input
-                  className={s.product}
-                  placeholder="Введите название продукта"
-                  name="product"
-                  value={this.state.product}
-                  type="text"
-                  onChange={this.handleChange}
-                />
-              </label>
-              <label>
-                <input
-                  className={s.gram}
-                  placeholder="Граммы"
-                  name="weight"
-                  value={this.state.product ? this.state.weight : ""}
-                  onChange={this.handleChange}
-                />
-              </label>
-              <button className={s.but} type="submit">
-                <svg className={s.icon}>
-                  <use href={sprite + "#icon-plus"} />
-                </svg>
-              </button>
-            </div>
-            {this.state.productsQuery.length > 0 && (
+        {/* {window.screen.width >767 && <DiaryDataCalendar /> } */}
 
-              <DiaryListProduct
-                toGetProduct={this.getCurrentProduct}
-                prod={this.state.productsQuery}
-              />
-            )}
-          </form>
-              {this.state.isOpen && ( <div className={s.modaka}>
+        {/* <DiaryDataCalendar /> */}
+        {this.state.showModal &&
+        <ModalDiary toggleModal={this.toggleModal}>
+        <h2>hello</h2>
+        
+        </ModalDiary>
+        }
+        
+
+
+
+        <div className={s.cont}>
+          {window.screen.width > 767 && (
+            <form onSubmit={this.handleSubmit}>
+              <div className={s.form}>
+                <label>
+                  <input
+                    className={s.product}
+                    placeholder="Введите название продукта"
+                    name="product"
+                    value={this.state.product}
+                    type="text"
+                    onChange={this.handleChange}
+                  />
+                </label>
+                <label>
+                  <input
+                    className={s.gram}
+                    placeholder="Граммы"
+                    name="weight"
+                    value={this.state.product ? this.state.weight : ""}
+                    onChange={this.handleChange}
+                  />
+                </label>
+                <button className={s.but} type="submit">
+                  <svg className={s.icon}>
+                    <use href={sprite + "#icon-plus"} />
+                  </svg>
+                </button>
+              </div>
+            </form>
+          )}
+          {this.state.productsQuery.length > 0 && (
+            <DiaryListProduct
+              toGetProduct={this.getCurrentProduct}
+              prod={this.state.productsQuery}
+            />
+          )}
+        </div>
+       
+        
+
+        {/* <div className={s.modaka}>
             <input
               className={style.productModal}
               name="product"
@@ -150,19 +171,19 @@ class DiaryProductList extends Component {
             onClick={this.handleSubmit}>
               Добавить
             </button>
-          </div>)}
-        </div>
+          </div> */}
       </>
     );
   }
 }
 const mapStateToProps = (state) => ({
-  date: state.date,
+  date: state.currentDay.date,
   token: state.auth.tokens.accessToken,
 });
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    toAddProducts: (data, productId, weight) => dispatch(productOperation.addProduct(data, productId, weight))
+    toAddProducts: (data, productId, weight) =>
+      dispatch(productOperation.addProduct(data, productId, weight)),
     // toFetchProducts: data => dispatch(productOperation.fetchProduct(data)),
   };
 };
