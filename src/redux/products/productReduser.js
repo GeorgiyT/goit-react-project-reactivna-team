@@ -11,6 +11,11 @@ import productAction from "./productAction";
 //   return state?.eatenProducts.filter(item => item.id !== payload);
 // };
 
+export const searchedProducts = createReducer([], {
+  [productAction.getProductsList]: (_, { payload }) => payload,
+  [productAction.resetProductList]: () => [],
+});
+
 export const currentDay = createReducer(
   {
     id: "",
@@ -21,24 +26,38 @@ export const currentDay = createReducer(
       kcalLeft: 0,
       kcalConsumed: 0,
       dailyRate: 0,
-      percentsOfDailyRate: 0
-    }
+      percentsOfDailyRate: 0,
+    },
   },
   {
     [productAction.fetchProductSuccess]: (state, { payload }) =>
-      payload?.id ? payload : { ...state, daySummary: payload, eatenProducts: [], id: "", date: payload.date },
+      payload?.id
+        ? payload
+        : {
+            ...state,
+            daySummary: payload,
+            eatenProducts: [],
+            id: "",
+            date: payload.date,
+          },
     [productAction.addProductSuccess]: (state, { payload }) => {
-      return { ...state, eatenProducts: payload.day.eatenProducts, daySummary: payload.daySummary };
+      return {
+        ...state,
+        eatenProducts: payload.day.eatenProducts,
+        daySummary: payload.daySummary,
+      };
     },
     [productAction.deleteProductSuccess]: (state, { payload }) => {
       console.log(payload);
 
       return {
         ...state,
-        eatenProducts: state.eatenProducts.filter(item => item.id !== payload.eatenProductId),
-        daySummary: payload.newDaySummary
+        eatenProducts: state.eatenProducts.filter(
+          (item) => item.id !== payload.eatenProductId
+        ),
+        daySummary: payload.newDaySummary,
       };
-    }
+    },
   }
 );
 // const products = createReducer(

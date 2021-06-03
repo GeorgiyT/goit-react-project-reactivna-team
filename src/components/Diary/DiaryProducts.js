@@ -5,30 +5,32 @@ import productOperation from "../../redux/products/productOperation";
 import { connect, useSelector } from "react-redux";
 import productSelector from "../../redux/products/productSelector";
 import DiaryProdustListItem from "./DiaryProducts/DiaryProdustListItem/DiaryProdustListItem";
-import style from "./DiaryProducts/DiaryProductList/DiaryProductList.module.css"
-import sprite from "../../images/symbol-defs.svg"
+import style from "./DiaryProducts/DiaryProductList/DiaryProductList.module.css";
+import sprite from "../../images/symbol-defs.svg";
 import Modal from "../Modal/Modal";
+import AddProductModal from "./DiaryProducts";
+import AddForm from "./DiaryProducts/DiaryProductList/AddForm";
 
-
-const DiaryProducts = ({ products, data, toFetchProducts,openModal }) => {
+const DiaryProducts = ({ products, data, toFetchProducts, openModal }) => {
   console.log(products, "products");
 
   const [showModal, setShowModal] = useState(false);
-//  const isLoding = useSelector(loader)
+  //  const isLoding = useSelector(loader)
 
   const toggleModal = () => {
-    setShowModal((prevState) => !prevState.showModal);
-  };
-
-  const modalClose = () => {
-    setShowModal(false);
+    setShowModal((prevState) => !prevState);
   };
 
   return (
     <div className={s.containe}>
+      {/* {window.screen.width >767&& <DiaryProductList /> } */}
       <DiaryProductList />
 
-      {!products || !(products.length > 0) ? <h2 className={s.title}> Продукты еще не добавлены</h2> : ""}
+      {!products || !(products.length > 0) ? (
+        <h2 className={s.title}> Продукты еще не добавлены</h2>
+      ) : (
+        ""
+      )}
       {products && (
         <ul className={s.listeeeer}>
           {products.map(({ id, ...props }) => (
@@ -36,28 +38,29 @@ const DiaryProducts = ({ products, data, toFetchProducts,openModal }) => {
           ))}
         </ul>
       )}
-      <div>
-        <Modal onModalToggle={modalClose} showModal={showModal}>
-            <DiaryProductList/>
+      {/* ====================== */}
+      {showModal && (
+        <Modal onModalToggle={toggleModal} showModal={showModal}>
+          <AddForm toggleModal={toggleModal} />
         </Modal>
-      </div>
-      <button
-        onClick={toggleModal}
-        className={style.bu} type="submit">
-            <svg className={style.icon}>
-              <use href={sprite + "#icon-plus"} />
-             </svg>
-              </button> 
+      )}
+      {/* ..................... */}
+
+      <button onClick={toggleModal} className={style.bu} type='submit'>
+        <svg className={style.icon}>
+          <use href={sprite + "#icon-plus"} />
+        </svg>
+      </button>
     </div>
   );
 };
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   products: productSelector.getProducts(state),
-  date: state.date
+  date: state.date,
 });
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    toFetchProducts: data => dispatch(productOperation.fetchProduct(data))
+    toFetchProducts: (data) => dispatch(productOperation.fetchProduct(data)),
   };
 };
 

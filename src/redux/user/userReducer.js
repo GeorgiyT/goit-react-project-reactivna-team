@@ -1,5 +1,4 @@
 import { combineReducers, createReducer } from "@reduxjs/toolkit";
-
 import { setUserLoading, loginSuccess, logOutSuccess } from "../auth/authActions";
 import { AuthDailyRateSuccess } from "../dailyRate/dailyRateActions";
 import { addProductSuccess, fetchProductSuccess } from "../products/productAction";
