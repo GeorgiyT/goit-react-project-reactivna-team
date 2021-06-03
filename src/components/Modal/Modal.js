@@ -1,13 +1,11 @@
 import React, { Component, createRef } from "react";
 import styles from "../Modal/Modal.module.css";
-import DailyRateModal from "../DailyRateForm/DailyRateModal";
 import sprite from "../../images/symbol-defs.svg";
 import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks } from "body-scroll-lock";
 
 class Modal extends Component {
   ref = createRef();
   componentDidMount() {
-    console.log(this.ref.current);
     window.addEventListener("keydown", this.closeModal);
   }
 
@@ -58,7 +56,7 @@ class Modal extends Component {
           <div className={styles.modal} ref={this.ref}>
             <button type="button" onClick={onModalToggle} className={styles.closeBtn}>
               <span className={styles.goBackSvg}>
-                <svg  width="20" height="20">
+                <svg width="20" height="20">
                   <use href={sprite + "#icon-arrow"} />
                 </svg>
               </span>
@@ -69,7 +67,6 @@ class Modal extends Component {
               </span>
             </button>
 
-            {/* <DailyRateModal /> */}
             {this.props.children}
           </div>
         </div>

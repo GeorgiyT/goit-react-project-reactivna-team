@@ -8,19 +8,10 @@ import {
   percentsOfDailyRateSelector,
   kcalConsumedSelector,
   kcalLeftSelector,
-  dateSelector,
+  dateSelector
 } from "../../redux/dailyInfo/dailyInfoSelector";
 
-import {
-  dayBox,
-  mainBox,
-  title,
-  kcalList,
-  productList,
-  kcalItem,
-  productBox,
-  grassClass,
-} from "./DailyInfo.module.css";
+import { dayBox, mainBox, title, kcalList, productList, kcalItem, productBox, grassClass } from "./DailyInfo.module.css";
 import grass from "../../images/grass-desc-cut.png";
 
 export default function DailyInfo() {
@@ -34,11 +25,9 @@ export default function DailyInfo() {
 
   return (
     <div className={mainBox}>
-      <img src={grass} className={grassClass} />
+      <img src={grass} className={grassClass} alt="SomeImage" />
       <div className={dayBox}>
-        <span className={title}>
-          Сводка за {date ? moment(newDate).format("DD.MM.yyyy") : ""}
-        </span>
+        <span className={title}>Сводка за {date ? moment(newDate).format("DD.MM.yyyy") : ""}</span>
         <ul className={kcalList}>
           <li className={kcalItem}>
             <span>Осталось</span>

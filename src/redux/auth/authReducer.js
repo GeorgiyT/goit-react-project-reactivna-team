@@ -13,7 +13,7 @@ import {
 } from "./authActions";
 
 const tokenReducer = createReducer(
-  {},
+  { accessToken: "", refreshToken: "", sid: "" },
   {
     [registerSuccess]: (_, { payload }) => {},
     [loginSuccess]: (_, { payload }) => ({

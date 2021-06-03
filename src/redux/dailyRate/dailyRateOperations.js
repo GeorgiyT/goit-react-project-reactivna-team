@@ -12,7 +12,6 @@ const getDailyRateOperation = values => async dispatch => {
   dispatch(getDailyRateRequest());
   try {
     const response = await axiosInstance.post(`/daily-rate`, values);
-    console.log(response);
     dispatch(getDailyRateSuccess(response.data));
   } catch (error) {
     dispatch(getDailyRateError(error));

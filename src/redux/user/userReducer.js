@@ -1,11 +1,10 @@
 import { combineReducers, createReducer } from "@reduxjs/toolkit";
 import { setUserLoading, loginSuccess, logOutSuccess } from "../auth/authActions";
 import { AuthDailyRateSuccess } from "../dailyRate/dailyRateActions";
-import { addProductSuccess, fetchProductSuccess } from "../products/productAction";
 import { getUserError, getUserSuccess, resetError, setError } from "./userActions";
 
 const userInfoReducer = createReducer(
-  {},
+  { username: "", email: "", id: "" },
 
   {
     [loginSuccess]: (
@@ -30,7 +29,7 @@ const userInfoReducer = createReducer(
 );
 
 const userDataReducer = createReducer(
-  {},
+  { weight: 0, height: 0, age: 0, bloodType: 0, desiredWeight: 0, dailyRate: 0 },
   {
     [loginSuccess]: (
       _,
@@ -65,10 +64,6 @@ const userDataReducer = createReducer(
       dailyRate
     }),
     [logOutSuccess]: () => ({})
-    // [logOutSuccess]: () => ({})
-    // [AuthDailyRateSuccess]: (_, { payload: { dailyRate } }) => ({
-    //   dailyRate
-    // })
   }
 );
 
@@ -88,17 +83,12 @@ const notAllowedReducer = createReducer([], {
   [AuthDailyRateSuccess]: (_, { payload }) => payload.notAllowedProducts
 });
 
-// const dailyRateReducer = createReducer([], {
-//   [getUserSuccess]: (_, { payload }) => payload.userData.days
-// });
-
 const userReducers = combineReducers({
   data: userInfoReducer,
   isLoadind: userLoaderReducer,
   error: userErrorReducer,
-  notAllowedProducts: notAllowedReducer, //____________SPROSIT U TOPOLYA GDE ZHIVET LYUBIMAYA !!!!!!!!!!!!!!!!!!
+  notAllowedProducts: notAllowedReducer,
   userData: userDataReducer
-  // dailyRate: dailyRateReducer
 });
 
 export default userReducers;

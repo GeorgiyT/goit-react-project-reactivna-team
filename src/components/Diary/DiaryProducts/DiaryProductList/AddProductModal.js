@@ -10,49 +10,45 @@ class Modal extends Component {
     productsQuery: [],
     productId: "",
     error: "",
-    isOpen: false,
-
+    isOpen: false
   };
-handleChange = e => {
+  handleChange = e => {
     const { name, value, id } = e.target;
-    console.log(id);
     this.setState({
-      [name]: value,
+      [name]: value
     });
     if (name === "productId") {
       this.setState({
         [name]: value,
-        productId: id,
+        productId: id
       });
     }
   };
-  
+
   render() {
     return (
       <div className={s.modaka}>
         <input
-          className={s.productModal }
-            name="product"
-            placeholder="Введите название продукта"
+          className={s.productModal}
+          name="product"
+          placeholder="Введите название продукта"
           type="text"
           // value={this.state.product}
           autoComplete="off"
           onChange={this.handleChange}
-            />
+        />
         <input
           className={s.gramModal}
-            name="weight"
-            placeholder="Граммы"
+          name="weight"
+          placeholder="Граммы"
           type="number"
           //  value={this.state.product ? this.state.weight : ""}
-              // onChange={this.handleChange}
-          />
-        <button type="button"
-        className={s.buttonModal}>
-             Добавить
-            </button>
-    </div>
-      
+          // onChange={this.handleChange}
+        />
+        <button type="button" className={s.buttonModal}>
+          Добавить
+        </button>
+      </div>
     );
   }
 }
