@@ -32,4 +32,4 @@ const itemsReducer = createReducer(dailyRateState, {
   })
 });
 
-// export default itemsReducer;
+export default itemsReducer;

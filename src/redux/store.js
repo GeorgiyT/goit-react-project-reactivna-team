@@ -31,7 +31,7 @@ const store = configureStore({
     auth: persistReducer(authPersitConfig, authReducer),
     user: userReducers,
     // products: productReduser,
-    // dailyRate: itemsReducer,
+    dailyRate: itemsReducer,
     // date: dateReducer,
     // days: daysReducer,
     currentDay: currentDay,

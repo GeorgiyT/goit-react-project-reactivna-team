@@ -6,8 +6,7 @@ import { connect } from "react-redux";
 import productOperation from "../../../../redux/products/productOperation";
 import DiaryListProduct from "../../DiaryListProduct";
 import axiosInstance from "../../../../utils/axiosInstance";
-import style from './Modal.module.css'
-
+import style from "./Modal.module.css";
 
 class DiaryProductList extends Component {
   state = {
@@ -16,8 +15,7 @@ class DiaryProductList extends Component {
     productsQuery: [],
     productId: "",
     error: "",
-    isOpen: true,
-
+    isOpen: false
   };
 
   componentDidMount() {
@@ -33,12 +31,12 @@ class DiaryProductList extends Component {
     const { name, value, id } = e.target;
     console.log(id);
     this.setState({
-      [name]: value,
+      [name]: value
     });
     if (name === "productId") {
       this.setState({
         [name]: value,
-        productId: id,
+        productId: id
       });
     }
   };
@@ -46,13 +44,10 @@ class DiaryProductList extends Component {
     e.preventDefault();
     // console.log(this.props.date);
     // console.log(this.props.date, this.state.productId, this.state.weight);
-    this.props.toAddProducts(
-      this.props.date,
-      this.state.productId,
-      this.state.weight
-    );
+    this.props.toAddProducts(this.props.date, this.state.productId, this.state.weight);
     this.setState({ product: "" });
   };
+
   getCurrentProduct = e => {
     this.setState({
       product: e.target.textContent,
@@ -62,25 +57,19 @@ class DiaryProductList extends Component {
     });
   };
 
-  searchProducts = (query) => {
-    if (
-      query.includes("(") ||
-      query.includes("%") ||
-      query.includes("+") ||
-      query.includes("&")
-    )
-      return;
+  searchProducts = query => {
+    if (query.includes("(") || query.includes("%") || query.includes("+") || query.includes("&")) return;
     axiosInstance
       .get(`/product?search=${query}`, {
-        headers: { Authorization: `Bearer ${this.props.token}` },
+        headers: { Authorization: `Bearer ${this.props.token}` }
       })
       .then(resp => {
         this.setState({
-          productsQuery: resp.data ? resp.data : [],
+          productsQuery: resp.data ? resp.data : []
         });
         //  console.log(this.state.productsQuery);
       })
-      .catch((err) => {
+      .catch(err => {
         if (err.response?.status === 400) {
           this.setState({ productsQuery: [] });
         }
@@ -120,45 +109,41 @@ class DiaryProductList extends Component {
               </button>
             </div>
             {this.state.productsQuery.length > 0 && (
-
-              <DiaryListProduct
-                toGetProduct={this.getCurrentProduct}
-                prod={this.state.productsQuery}
-              />
+              <DiaryListProduct toGetProduct={this.getCurrentProduct} prod={this.state.productsQuery} />
             )}
           </form>
-              {this.state.isOpen && ( <div className={s.modaka}>
-            <input
-              className={style.productModal}
-              name="product"
-              placeholder="Введите название продукта"
-              type="text"
-              value={this.state.product}
-              // autoComplete="off"
-              onChange={this.handleChange}
-            />
-            <input
-              className={style.gramModal}
-              name="weight"
-              placeholder="Граммы"
-              type="number"
-              value={this.state.product ? this.state.weight : ""}
-              onChange={this.handleChange}
-            />
-            <button type="button"
-              className={style.buttonModal}
-            onClick={this.handleSubmit}>
-              Добавить
-            </button>
-          </div>)}
+          {this.state.isOpen && (
+            <div className={s.modaka}>
+              <input
+                className={style.productModal}
+                name="product"
+                placeholder="Введите название продукта"
+                type="text"
+                value={this.state.product}
+                // autoComplete="off"
+                onChange={this.handleChange}
+              />
+              <input
+                className={style.gramModal}
+                name="weight"
+                placeholder="Граммы"
+                type="number"
+                value={this.state.product ? this.state.weight : ""}
+                onChange={this.handleChange}
+              />
+              <button type="button" className={style.buttonModal} onClick={this.handleSubmit}>
+                Добавить
+              </button>
+            </div>
+          )}
         </div>
       </>
     );
   }
 }
-const mapStateToProps = (state) => ({
-  date: state.date,
-  token: state.auth.tokens.accessToken,
+const mapStateToProps = state => ({
+  date: state.currentDay.date,
+  token: state.auth.tokens.accessToken
 });
 const mapDispatchToProps = dispatch => {
   return {
