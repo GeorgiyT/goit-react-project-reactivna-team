@@ -2,6 +2,7 @@ import { createReducer } from "@reduxjs/toolkit";
 import productAction, { fetchProductSuccess } from "../products/productAction";
 import { getDailyRateSuccess } from "./dailyRateActions";
 import { logOutSuccess } from "../auth/authActions";
+// import { logOutSuccess } from "../auth/authActions";
 const dailyRateState = {
   id: "",
   dailyRate: "",

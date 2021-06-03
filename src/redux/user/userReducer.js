@@ -66,6 +66,7 @@ const userDataReducer = createReducer(
       dailyRate
     }),
     [logOutSuccess]: () => ({})
+    // [logOutSuccess]: () => ({})
     // [AuthDailyRateSuccess]: (_, { payload: { dailyRate } }) => ({
     //   dailyRate
     // })

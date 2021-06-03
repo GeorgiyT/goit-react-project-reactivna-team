@@ -33,7 +33,7 @@ const AuthForm = () => {
           }}
         >
           {(
-            {  errors, touched } ///___esli proizoshel subbmit
+            { errors, touched } ///___esli proizoshel subbmit
           ) => (
             <Form className={style.auth_form}>
               <div className={style.form_group}>
