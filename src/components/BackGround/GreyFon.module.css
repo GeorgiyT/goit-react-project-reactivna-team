@@ -1,0 +1,15 @@
+.greyFon {
+  display: none;
+  overflow: hidden;
+  z-index: -1;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #f0f1f3;
+}
+@media screen and (min-width: 1280px) {
+  .greyFon {
+    display: block;
+    left: 630px;
+  }
+}
