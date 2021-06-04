@@ -1,0 +1,88 @@
+.title {
+  padding: 15px;
+  color: #9b9faa;
+  font-family: "Gotham Pro";
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.5;
+  padding-left: 15px;
+}
+.list {
+  max-height: 300px;
+  overflow-y: scroll;
+}
+.listin {
+  font-weight: normal;
+  font-size: 13px;
+}
+.listeeeer {
+  /* padding-top: 50px; */
+  overflow-y: scroll;
+  max-height: 300px;
+  padding-left: 15px;
+  margin-bottom: 60px;
+}
+@media screen and (min-width: 768px) {
+  .listeeeer {
+    padding-left: 0px;
+    margin-right: 80px;
+  }
+  .title {
+    padding-left: 40px;
+  }
+  .list {
+    margin-top: -40px;
+  }
+  .listin {
+    font-size: 13px;
+    padding-bottom: 5px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .listeeeer {
+    margin-left: 0px;
+    margin-bottom: 60px;
+    margin-right: 0px;
+    width: 75%;
+  }
+}
+/* ::-webkit-scrollbar {
+  width: 6px;
+  background-color: #f0f1f3;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #264061;
+}
+::-webkit-scrollbar-thumb:vertical {
+  height: 40px;
+} */
+
+@media screen and (min-width: 768px) {
+  .title {
+    font-size: 16px;
+    padding: 20px;
+    font-size: 16px;
+    margin-left: 92px;
+  }
+  .containe {
+    margin-top: 100px;
+    margin-left: 92px;
+    margin-bottom: 0px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .title {
+    font-size: 18px;
+    margin-left: 0px;
+  }
+  .containe {
+    margin-top: 140px;
+    margin-left: 115px;
+    margin-bottom: 60px;
+  }
+}
+
+.containe {
+  margin-bottom: 60px;
+}

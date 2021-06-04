@@ -1,0 +1,62 @@
+.div {
+  display: flex;
+}
+.CalendarContainer {
+  display: flex;
+  padding-left: 15px;
+  padding-top: 40px;
+}
+@media screen and (min-width: 768px) {
+  .CalendarContainer {
+    padding-left: 0px;
+    padding-top: 0px;
+  }
+}
+.images {
+  width: 18px;
+  height: 20px;
+  margin-left: 20px;
+  fill: #9b9faa;
+}
+.calendar {
+  color: #212121;
+  font-size: 18px;
+  line-height: 22px;
+  font-family: Verdana, sans-serif;
+  border: none;
+  font-weight: bold;
+  width: 138px;
+  height: 20px;
+  padding: 0;
+  margin-bottom: 30px;
+}
+@media screen and (min-width: 768px) {
+  .calendar {
+    color: #212121;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 1.22;
+    font-family: Verdana, sans-serif;
+    border: none;
+    width: 138px;
+    height: 20px;
+    padding: 0;
+    margin-bottom: 30px;
+  }
+}
+
+.calen {
+  position: relative;
+}
+.calen::after {
+  content: "";
+  position: absolute;
+  width: 18px;
+  height: 20px;
+  top: 0;
+  right: -17px;
+  background-image: url("../../../../images/calendar.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  z-index: 0;
+}

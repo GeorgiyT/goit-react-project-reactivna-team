@@ -1,0 +1,243 @@
+.auth_container {
+  display: block;
+  margin: 0 auto;
+  /* width: 300px; */
+  margin-top: 40px;
+  text-align: center;
+}
+.auth_title {
+  font-family: Gotham Pro;
+  align-items: center;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 13px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #fc842d;
+  margin-bottom: 60px;
+}
+и .form_group {
+  margin-bottom: 60px;
+}
+.auth_form {
+  display: flex;
+  flex-direction: column;
+}
+.form_group_item {
+  margin-bottom: 75px;
+}
+
+.button_container {
+  display: flex;
+  margin: 0 auto;
+  flex-direction: column;
+  height: 108px;
+  justify-content: space-between;
+}
+.auth_button {
+  background: #fc842d;
+  box-shadow: 0px 4px 10px rgba(252, 132, 45, 0.5);
+  border-radius: 30px;
+  border: none;
+  width: 176px;
+  height: 44px;
+  cursor: pointer;
+  display: block;
+  margin: 0 auto;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 17px;
+  letter-spacing: 0.04em;
+  text-transform: capitalize;
+  color: white;
+}
+.auth_button:hover {
+  transform: scaleX(1.1) scaleY(1.1);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.auth_link {
+  background: #ffffff;
+  border: 2px solid #fc842d;
+  box-sizing: border-box;
+  border-radius: 30px;
+  width: 176px;
+  height: 44px;
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 10px;
+  line-height: 17px;
+
+  text-align: center;
+  letter-spacing: 0.04em;
+
+  color: #fc842d;
+}
+.auth_link:hover {
+  transform: scaleX(1.1) scaleY(1.1);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+.eye_icon {
+  fill: #9b9faa;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  background-color: transparent;
+  border-radius: 50%;
+}
+.error {
+  position: absolute;
+  top: 28px;
+  left: 0;
+  color: #e11616;
+  font-size: 15px;
+}
+.button_eye_icon {
+  position: absolute;
+  top: -24px;
+  right: 3px;
+  border-radius: 50%;
+  border: none;
+  background-color: transparent;
+}
+.input {
+  padding-left: 0;
+  padding-right: 0;
+  margin-bottom: 60px;
+  width: 100%;
+  border: 0;
+  border-bottom: 1px solid #e0e0e0;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.input:focus {
+  outline: none;
+}
+
+.input:not(:placeholder-shown) ~ .name {
+  top: -30px;
+  font-size: 12px;
+}
+
+.inputPass {
+  composes: input;
+  margin-bottom: 60px;
+}
+
+.inputPass:not(:placeholder-shown) ~ .name {
+  top: -30px;
+  font-size: 12px;
+  transition: 0.3s;
+}
+.errorInput {
+  background-color: #e1161613;
+  border-bottom: 1px solid #e11616;
+}
+.label {
+  position: relative;
+}
+
+.name {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  left: 0;
+  top: -20px;
+  font-family: Verdana;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.21;
+  letter-spacing: 0.04em;
+  color: #9b9faa;
+  transition: 0.3s;
+}
+
+/* .auth_input {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
+  align-items: flex-start;
+
+  color: #9b9faa;
+}
+.input_error {
+  color: #9b9faa;
+} */
+.form_group_last {
+  position: relative;
+}
+
+@media screen and (min-width: 768px) {
+  .auth_container {
+    width: 382px;
+    margin-top: 157px;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .button_container {
+    display: flex;
+    flex-direction: row;
+
+    align-items: center;
+
+    margin: 0;
+  }
+  .auth_button {
+    background: #fc842d;
+    box-shadow: 0px 4px 10px rgba(252, 132, 45, 0.5);
+    border-radius: 30px;
+    border: none;
+    width: 176px;
+    height: 44px;
+
+    display: block;
+    margin: 0;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: 0.04em;
+    text-transform: capitalize;
+    color: white;
+  }
+  .auth_input {
+    width: 239px;
+  }
+
+  .auth_title {
+    text-align: left;
+  }
+
+  .button_eye_icon {
+    position: absolute;
+    top: -24px;
+    right: 4px;
+    border-radius: 50%;
+    border: none;
+    background-color: transparent;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .auth_container {
+    width: 382px;
+    margin-top: 213px;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .auth_title {
+    text-align: left;
+  }
+  .button_eye_icon {
+    position: absolute;
+    top: -24px;
+    right: 4px;
+    border-radius: 50%;
+    border: none;
+    background-color: transparent;
+  }
+}

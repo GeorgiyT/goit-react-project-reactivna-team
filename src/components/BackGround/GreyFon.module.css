@@ -1,0 +1,45 @@
+.greyFon {
+  display: none;
+  overflow: hidden;
+  z-index: -1;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #f0f1f3;
+}
+
+@media screen and (min-width: 768px) {
+  .greyFon {
+    display: block;
+    overflow: hidden;
+    width: 100%;
+    height: 50%;
+    bottom: -325px;
+  }
+
+  .grassClass {
+    transform: rotate(90deg);
+    display: block;
+    position: absolute;
+    left: 392px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .greyFon {
+    display: block;
+    /* left: 630px; */
+    right: 0;
+    width: 53vw;
+    height: 100vh;
+    bottom: unset;
+  }
+  .grassClass {
+    position: absolute;
+    top: 80px;
+    right: 0px;
+    transform: rotate(0deg);
+    bottom: unset;
+    left: unset;
+  }
+}

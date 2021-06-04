@@ -1,0 +1,45 @@
+т.modaka {
+  display: flex;
+  flex-direction: column;
+}
+.productModal {
+  width: 289px;
+  font-family: Verdana;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 17px;
+  letter-spacing: 0.04em;
+  color: #9b9faa;
+  border: none;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 20px;
+  padding-left: 0px;
+  margin-right: 30px;
+}
+.gramModal {
+  width: 289px;
+  font-family: Verdana;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 17px;
+  letter-spacing: 0.04em;
+  color: #9b9faa;
+  border: none;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 20px;
+
+  padding-left: 0px;
+  margin-bottom: 60px;
+}
+.buttonModal {
+  width: 176px;
+  color: #ffffff;
+  background: #fc842d;
+  box-shadow: 0px 4px 10px rgba(252, 132, 45, 0.5);
+  border-radius: 30px;
+  border: 1px solid #fc842d;
+  padding: 13px;
+  margin-left: 52px;
+}

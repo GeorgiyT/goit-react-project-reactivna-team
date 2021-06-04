@@ -1,24 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import { Suspense, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Switch } from "react-router";
+import BackGround from "./components/BackGround/BackGround";
+import GreyFon from "./components/BackGround/GreyFon";
+import Header from "./components/Header/Header";
+import { IsLoader } from "./components/Loader/IsLoader";
+import { isAuthenticatedSelector } from "./redux/auth/authSelectors";
+import { getUserOperation } from "./redux/user/userOperation";
+import PrivateRoute from "./routes/PrivateRoute";
+import PublicRoute from "./routes/PublicRoute";
+
+import routes from "./routes/routes";
 
 function App() {
+  const isAuth = useSelector(isAuthenticatedSelector);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    isAuth && dispatch(getUserOperation());
+  }, [isAuth, dispatch]);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Suspense fallback={<IsLoader />}>
+      {!isAuth ? <BackGround /> : <GreyFon />}
+      <Header />
+      <Switch>
+        {routes.map((route) =>
+          route.private ? (
+            <PrivateRoute {...route} key={route.path} isAuth={isAuth} />
+          ) : (
+            <PublicRoute {...route} key={route.path} isAuth={isAuth} />
+          )
+        )}
+      </Switch>
+    </Suspense>
   );
 }
 
