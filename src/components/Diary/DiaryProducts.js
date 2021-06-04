@@ -15,7 +15,7 @@ const DiaryProducts = ({ products, data, toFetchProducts, openModal }) => {
   console.log(products, "products");
 
   const [showModal, setShowModal] = useState(false);
-  //  const isLoding = useSelector(loader)
+ 
 
   const toggleModal = () => {
     setShowModal((prevState) => !prevState);
@@ -23,8 +23,7 @@ const DiaryProducts = ({ products, data, toFetchProducts, openModal }) => {
 
   return (
     <div className={s.containe}>
-      {/* {window.screen.width >767&& <DiaryProductList /> } */}
-      <DiaryProductList />
+            <DiaryProductList />
 
       {!products || !(products.length > 0) ? (
         <h2 className={s.title}> Продукты еще не добавлены</h2>
@@ -38,6 +37,7 @@ const DiaryProducts = ({ products, data, toFetchProducts, openModal }) => {
           ))}
         </ul>
       )}
+      
       {/* ====================== */}
       {showModal && (
         <Modal onModalToggle={toggleModal} showModal={showModal}>

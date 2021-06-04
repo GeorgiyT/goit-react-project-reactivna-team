@@ -13,13 +13,14 @@ const DataCalendar = ({ on }) => {
     dispatch(productOperations.fetchProduct({ date: moment(startDate).format("yyyy-MM-DD") }));
   }, [startDate, dispatch]);
   return (
+    <div  className={s.calen}>
     <DatePicker
       className={s.calendar}
       selected={startDate}
       dateFormat="dd.MM.yyyy"
-      // showTimeSelect
       onChange={date => on(setStartDate(date))}
-    />
+      />
+    </div>
   );
 };
 export default DataCalendar;

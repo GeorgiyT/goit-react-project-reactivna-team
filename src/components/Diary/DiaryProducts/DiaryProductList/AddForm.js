@@ -58,13 +58,8 @@ const AddForm = ({ toggleModal }) => {
 
   return (
     <>
-      {!!productsQuery.length && (
-        <DiaryListProduct
-          toGetProduct={getCurrentProduct}
-          prod={productsQuery}
-        />
-      )}
-      <form onSubmit={handleSubmit}>
+      
+      <form  onSubmit={handleSubmit}>
         <div className={s.form}>
           <label>
             <input
@@ -91,6 +86,12 @@ const AddForm = ({ toggleModal }) => {
           </button>
         </div>
       </form>
+      {!!productsQuery.length && (
+        <DiaryListProduct
+          toGetProduct={getCurrentProduct}
+          prod={productsQuery}
+        />
+      )}
     </>
   );
 };

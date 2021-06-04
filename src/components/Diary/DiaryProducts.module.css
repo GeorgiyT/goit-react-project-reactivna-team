@@ -8,35 +8,42 @@
   padding-left: 15px;
 }
 .list {
-  background-color: inherit;
   max-height: 300px;
   overflow-y: scroll;
 }
 .listin {
-  list-style-type: none;
   font-weight: normal;
-  font-size: 14px;
-  margin-bottom: 5px;
+  font-size: 13px;
 }
 .listeeeer {
-  padding-top: 50px;
+  /* padding-top: 50px; */
   overflow-y: scroll;
   max-height: 300px;
   padding-left: 15px;
+  margin-bottom: 60px;
 }
 @media screen and (min-width: 768px) {
   .listeeeer {
-    padding-bottom: 60px;
+    padding-left: 0px;
+    margin-right: 80px;
   }
   .title {
     padding-left: 40px;
   }
+  .list {
+    margin-top: -40px;
+  }
+  .listin {
+    font-size: 13px;
+    padding-bottom: 5px;
+  }
 }
 @media screen and (min-width: 1280px) {
   .listeeeer {
-    margin-left: 115px;
+    margin-left: 0px;
     margin-bottom: 60px;
-    margin-right: 30px;
+    margin-right: 0px;
+    width: 75%;
   }
 }
 ::-webkit-scrollbar {
@@ -58,33 +65,24 @@
     font-size: 16px;
     margin-left: 92px;
   }
+  .containe {
+    margin-top: 100px;
+    margin-left: 92px;
+    margin-bottom: 0px;
+  }
 }
 @media screen and (min-width: 1280px) {
   .title {
     margin-left: 115px;
     font-size: 18px;
   }
-}
-.containe {
-  padding-right: 15px;
-}
-@media screen and (min-width: 768px) {
   .containe {
-    margin-top: 100px;
-    padding-bottom: 61px;
+    margin-top: 140px;
+    margin-left: 115px;
+    margin-bottom: 60px;
   }
-}
-@media screen and (min-width: 1280px) {
-  .containe {
-    margin-top: 164px;
-  }
-}
-.containe {
 }
 
-@media screen and (min-width: 768px) {
-  .containe {
-    margin-top: 100px;
-    margin-left: 92px;
-  }
+.containe {
+  margin-bottom: 60px;
 }

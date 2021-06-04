@@ -5,10 +5,7 @@ import s from "../DiaryProdustListItem/DiaryProdustListItem.module.css";
 
 const DiaryProdustListItem = ({ title, weight, kcal, deleteProduct, id, day, date, dayId }) => {
   const calories = Math.round(kcal);
-  // const dayId = day.find((item) =>
-  //   item.date === date
-  // )?._id;
-  // console.log("IDDDDDDDDDDD", id);
+
 
   return (
     <>
