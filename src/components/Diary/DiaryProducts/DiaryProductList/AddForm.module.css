@@ -49,6 +49,9 @@
   margin: 0 auto;
   color: #ffffff;
 }
+.twobut {
+  display: none;
+}
 
 @media screen and (min-width: 767px) {
   .form {
@@ -56,11 +59,12 @@
     flex-direction: unset;
   }
   .but {
+    display: none;
     width: 50px;
     height: 50px;
     color: #fff;
+    margin-left: 48px;
     margin: 0 auto;
-    display: block;
     border-radius: 50%;
     background: #fc842d;
     box-shadow: 0 4px 10px 0 rgb(252 132 45 / 50%);
@@ -75,22 +79,35 @@
   .but {
     margin-left: 48px;
   }
+  .twobut {
+    width: 50px;
+    height: 50px;
+    margin: 0 auto;
+    display: block;
+    border-radius: 50%;
+    background: #fc842d;
+    box-shadow: 0 4px 10px 0 rgb(252 132 45 / 50%);
+    border: 1px solid #fc842d;
+  }
 }
 @media screen and (min-width: 1280px) {
   .but {
     margin-left: 56px;
     margin-right: 0px;
   }
-}
-.bu {
-  width: 50px;
-  height: 50px;
-  color: #fff;
-  margin-top: 60px;
-  margin-bottom: 60px;
-  border-radius: 50%;
-  background: #fc842d;
-  box-shadow: 0 4px 10px 0 rgb(252 132 45 / 50%);
-  border: 1px solid #fc842d;
-  margin-left: 135px;
+  .twobut {
+    margin-left: 48px;
+  }
+  .bu {
+    width: 50px;
+    height: 50px;
+    color: #fff;
+    margin-top: 60px;
+    margin-bottom: 60px;
+    border-radius: 50%;
+    background: #fc842d;
+    box-shadow: 0 4px 10px 0 rgb(252 132 45 / 50%);
+    border: 1px solid #fc842d;
+    margin-left: 135px;
+  }
 }
