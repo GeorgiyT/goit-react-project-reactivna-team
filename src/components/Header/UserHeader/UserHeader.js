@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import s from "./UserHeader.module.css";
 import logo from "../../../images/header/logo.png";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import * as authOperations from "../../../redux/auth/authOperations";
 import { getUserNameSelector } from "../../../redux/user/userSelector";
@@ -10,33 +10,25 @@ import Burger from "./Burger/Burger";
 const UserHeader = ({ userNic, logOutFunc }) => {
   const [show, setShow] = useState(false);
   const onToggle = () => {
-    setShow((prevState) => !prevState);
+    setShow(prevState => !prevState);
   };
   return (
     <div className={s.container}>
       <div className={s.header}>
-        <a href="/" className={s.logo}>
+        <Link to="/" className={s.logo}>
           <img src={logo} alt="" />
           <span>Slim</span>
           <span className={s.logo__color}>Mom</span>
-        </a>
+        </Link>
         <ul className={s.navigations}>
           <li>
             <span></span>
-            <NavLink
-              activeClassName={s.active}
-              className={s.default}
-              to="/daily-rate"
-            >
+            <NavLink activeClassName={s.active} className={s.default} to="/daily-rate">
               ДНЕВНИК
             </NavLink>
           </li>
           <li>
-            <NavLink
-              activeClassName={s.active}
-              className={s.default}
-              to="/calculator"
-            >
+            <NavLink activeClassName={s.active} className={s.default} to="/calculator">
               КАЛЬКУЛЯТОР
             </NavLink>
           </li>
@@ -56,10 +48,10 @@ const UserHeader = ({ userNic, logOutFunc }) => {
     </div>
   );
 };
-const mapStateToProps = (state) => ({
-  userNic: getUserNameSelector(state),
+const mapStateToProps = state => ({
+  userNic: getUserNameSelector(state)
 });
 const mapDispatchToProps = {
-  logOutFunc: authOperations.logOutOperation,
+  logOutFunc: authOperations.logOutOperation
 };
 export default connect(mapStateToProps, mapDispatchToProps)(UserHeader);

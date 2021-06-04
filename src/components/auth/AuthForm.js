@@ -46,7 +46,7 @@ const AuthForm = () => {
                         placeholder=" "
                         className={`${style.input} ${touched.username && errors.username && style.errorInput}`}
                       />
-                      <p className={style.name}>Имя *</p>
+                      <p className={style.name}>Имя</p>
                       {touched.username && errors.username && <div className={style.error}>{errors.username}</div>}
                     </label>
                   </>

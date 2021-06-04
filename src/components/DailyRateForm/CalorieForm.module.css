@@ -1,3 +1,7 @@
+.container {
+  margin: 0 15px;
+}
+
 .title_form {
   width: 290px;
   margin: 30px 0 30px 0;
@@ -152,8 +156,12 @@ input[type="radio"]:checked + label:after {
 }
 
 @media screen and (min-width: 768px) {
-  .input{
- width: 239px;
+  .container {
+    margin: 0 87px;
+  }
+
+  .input {
+    width: 239px;
   }
   .title_form {
     width: 605px;
@@ -180,6 +188,9 @@ input[type="radio"]:checked + label:after {
 }
 
 @media screen and (min-width: 1280px) {
+  .container {
+    margin: 0 68px 0 115px;
+  }
   .title_form {
     font-size: 34px;
     margin: 137px 0 68px 0;

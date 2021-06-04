@@ -1,6 +1,6 @@
 @media screen and (min-width: 320px) {
   .mainBox {
-    background: #f0f1f3;
+    /* background: #f0f1f3; */
     padding-top: 40px;
     padding-bottom: 84px;
   }
@@ -81,8 +81,8 @@
     display: block;
     position: absolute;
     transform: rotate(90deg);
-    bottom: -350px;
-    right: 0;
+    bottom: -250px;
+    right: 250px;
   }
   .dayBox {
     width: 50%;

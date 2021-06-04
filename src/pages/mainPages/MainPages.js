@@ -23,9 +23,6 @@ export default function MainPages() {
       <Modal onModalToggle={modalClose} showModal={showModal}>
         <DailyRateModal />
       </Modal>
-      <Modal onModalToggle={modalClose} showModal={showModal}>
-        <DailyRateModal />
-      </Modal>
       {isLoding && <IsLoader />}
     </div>
   );

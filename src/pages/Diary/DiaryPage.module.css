@@ -1,5 +1,6 @@
 @media screen and (min-width: 1280px) {
   .DiaryPageBox {
     display: flex;
+    justify-content: center;
   }
 }

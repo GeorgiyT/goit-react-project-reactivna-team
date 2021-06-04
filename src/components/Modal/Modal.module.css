@@ -1,5 +1,5 @@
 .overlay {
-  top: 104px;
+  top: 80px;
   position: fixed;
   left: 0;
   right: 0;
@@ -28,7 +28,7 @@
 }
 
 .modal {
-  top: 138px;
+  top: 115px;
   position: fixed;
   width: 100%;
   padding: 40px 15px 80px;
@@ -45,6 +45,7 @@
   border: none;
   color: #000000;
 }
+
 .closeSvg {
   display: none;
 }

@@ -9,7 +9,7 @@
 }
 
 .calories_title {
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   font-family: Verdana;
   font-style: normal;
   font-weight: bold;
@@ -26,7 +26,6 @@
   line-height: 1.21;
 }
 
-
 .products {
   font-weight: bold;
   font-size: 14px;
@@ -36,14 +35,25 @@
   color: #212121;
 }
 .input {
-  bottom: 19px;
   position: relative;
-  width: 95%;
+  width: 92%;
   border: 0;
   border-bottom: 1px solid #e0e0e0;
 }
 .input:focus {
   outline: none;
+}
+
+.formGroup {
+  position: relative;
+  padding-bottom: 10px;
+}
+.formGroup__icon {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  top: 2px;
+  right: 10px;
 }
 
 .button {
@@ -61,8 +71,13 @@
   text-align: center;
   letter-spacing: 0.04em;
   box-shadow: 0px 4px 10px rgba(252, 132, 45, 0.5);
-  background-color: #FC842D;
+  background-color: #fc842d;
   color: #ffffff;
+}
+
+.button:hover {
+  transform: scaleX(1.1) scaleY(1.1);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
 .products_list {
@@ -74,7 +89,7 @@
   font-family: Verdana;
   font-style: normal;
   font-weight: normal;
-  color: #9B9FAA;
+  color: #9b9faa;
   margin-bottom: 40px;
 }
 .productsItem:not(:last-child) {
@@ -84,7 +99,7 @@
 .calories {
   position: relative;
 }
-.calories::after {
+/* .calories::after {
   content: "";
   position: absolute;
   left: 0;
@@ -93,7 +108,7 @@
   bottom: -30px;
   background-color: #e0e0e0;
   margin-top: 30px;
-}
+} */
 
 @media screen and (min-width: 768px) {
   .title {
@@ -101,7 +116,7 @@
     line-height: 1.23;
     text-align: center;
     margin-bottom: 22px;
-    color:#212121;
+    color: #212121;
     font-weight: bold;
   }
   .container {
