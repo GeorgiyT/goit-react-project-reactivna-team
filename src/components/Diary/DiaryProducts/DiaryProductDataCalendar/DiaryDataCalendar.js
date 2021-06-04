@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import DataCalendar from "./DiaryProductDataCalendar";
-import sprite from "../../../../images/symbol-defs.svg";
 import moment from "moment";
 import s from "./DiaryDataCalendar.module.css";
 import { connect } from "react-redux";

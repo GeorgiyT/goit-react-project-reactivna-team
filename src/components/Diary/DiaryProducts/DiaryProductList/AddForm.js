@@ -4,8 +4,8 @@ import * as productOperation from "../../../../redux/products/productOperation";
 import DiaryListProduct from "../../DiaryListProduct";
 import * as productAction from "../../../../redux/products/productAction";
 import s from "./AddForm.module.css";
-import sprite from '../../../../images/symbol-defs.svg'
-import style from '../DiaryProductList/DiaryProductList.module.css'
+import sprite from "../../../../images/symbol-defs.svg";
+import style from "../DiaryProductList/DiaryProductList.module.css";
 
 const initialState = {
   product: "",
@@ -53,7 +53,6 @@ const AddForm = ({ toggleModal }) => {
 
   return (
     <>
-      {!!productsQuery.length && <DiaryListProduct toGetProduct={getCurrentProduct} prod={productsQuery} />}
       <form onSubmit={handleSubmit}>
         <div className={s.form}>
           <label>
@@ -81,19 +80,14 @@ const AddForm = ({ toggleModal }) => {
           <button className={s.but} type="submit">
             Добавить
           </button>
-          <button className={s.twobut} type='submit'>
+          <button className={s.twobut} type="submit">
             <svg className={style.icon}>
-          <use href={sprite + "#icon-plus"} />
-        </svg>
+              <use href={sprite + "#icon-plus"} />
+            </svg>
           </button>
         </div>
       </form>
-      {!!productsQuery.length && (
-        <DiaryListProduct
-          toGetProduct={getCurrentProduct}
-          prod={productsQuery}
-        />
-      )}
+      {!!productsQuery.length && <DiaryListProduct toGetProduct={getCurrentProduct} prod={productsQuery} />}
     </>
   );
 };
