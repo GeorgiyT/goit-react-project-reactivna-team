@@ -8,13 +8,10 @@
 }
 @media screen and (min-width: 768px) {
   .CalendarContainer {
+    padding-left: 0px;
+    padding-top: 0px;
   }
 }
-@media screen and (min-width: 1280px) {
-  .calendar {
-  }
-}
-
 .images {
   width: 18px;
   height: 20px;
@@ -47,7 +44,19 @@
     margin-bottom: 30px;
   }
 }
-@media screen and (min-width: 1280px) {
-  .calendar {
-  }
+
+.calen {
+  position: relative;
+}
+.calen::after {
+  content: "";
+  position: absolute;
+  width: 18px;
+  height: 20px;
+  top: 0;
+  right: -17px;
+  background-image: url("../../../../images/calendar.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  z-index: 0;
 }

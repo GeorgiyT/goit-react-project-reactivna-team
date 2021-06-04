@@ -4,6 +4,8 @@ import * as productOperation from "../../../../redux/products/productOperation";
 import DiaryListProduct from "../../DiaryListProduct";
 import * as productAction from "../../../../redux/products/productAction";
 import s from "./AddForm.module.css";
+import sprite from '../../../../images/symbol-defs.svg'
+import style from '../DiaryProductList/DiaryProductList.module.css'
 
 const initialState = {
   product: "",
@@ -79,8 +81,19 @@ const AddForm = ({ toggleModal }) => {
           <button className={s.but} type="submit">
             Добавить
           </button>
+          <button className={s.twobut} type='submit'>
+            <svg className={style.icon}>
+          <use href={sprite + "#icon-plus"} />
+        </svg>
+          </button>
         </div>
       </form>
+      {!!productsQuery.length && (
+        <DiaryListProduct
+          toGetProduct={getCurrentProduct}
+          prod={productsQuery}
+        />
+      )}
     </>
   );
 };

@@ -21,9 +21,6 @@ class DiaryDataCalendar extends Component {
     return (
       <div className={s.CalendarContainer}>
         <DataCalendar on={this.handleTap} />
-        <svg className={s.images}>
-          <use href={sprite + "#icon-calendar"} />
-        </svg>
       </div>
     );
   }

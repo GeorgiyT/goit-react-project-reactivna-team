@@ -29,12 +29,14 @@ const DataCalendar = ({ on }) => {
   }, [startDate, dispatch, opener]);
 
   return (
+    <div  className={s.calen}>
     <DatePicker
       className={s.calendar}
       selected={startDate}
       dateFormat="dd.MM.yyyy"
       onChange={date => onChaneFunc(date, startDate)}
-    />
+      />
+    </div>
   );
 };
 export default DataCalendar;

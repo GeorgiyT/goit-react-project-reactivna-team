@@ -18,8 +18,7 @@ const DiaryProducts = ({ products }) => {
 
   return (
     <div className={s.containe}>
-      <DiaryProductList />
-
+            <DiaryProductList />
       {!products || !(products.length > 0) ? <h2 className={s.title}> Продукты еще не добавлены</h2> : ""}
       {products && (
         <ul className={s.listeeeer}>
@@ -28,6 +27,7 @@ const DiaryProducts = ({ products }) => {
           ))}
         </ul>
       )}
+      
       {/* ====================== */}
       {showModal && (
         <Modal onModalToggle={toggleModal} showModal={showModal}>

@@ -1,10 +1,9 @@
-/* .product {
-  display: none;
-  width: 300px;
+.product {
+  width: 251px;
   font-family: Verdana;
   font-style: normal;
   font-weight: bold;
-  font-size: 14px;
+  font-size: 13px;
   line-height: 17px;
   letter-spacing: 0.04em;
   color: #9b9faa;
@@ -15,20 +14,24 @@
   margin-right: 30px;
 }
 .gram {
-  display: none;
-  width: 120px;
+  width: 251px;
   font-family: Verdana;
   font-style: normal;
   font-weight: bold;
-  font-size: 14px;
+  font-size: 13px;
   line-height: 17px;
-  text-align: right;
   letter-spacing: 0.04em;
   color: #9b9faa;
   border: none;
   border-bottom: 1px solid #e0e0e0;
-  padding: 20px;
+  padding-bottom: 20px;
+  padding-top: 20px;
   padding-right: 0px;
+  margin-bottom: 60px;
+}
+.form {
+  display: flex;
+  flex-direction: column;
 }
 .icon {
   width: 14px;
@@ -36,59 +39,75 @@
   fill: #fff;
 }
 .but {
-  display: none;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
+  width: 176px;
+  border-radius: 30px;
   background: #fc842d;
   box-shadow: 0 4px 10px 0 rgb(252 132 45 / 50%);
   border: 1px solid #fc842d;
-  margin-left: 75px;
+  padding: 10px;
+  display: block;
+  margin: 0 auto;
+  color: #ffffff;
 }
-@media screen and (min-width: 768px) {
-  .but {
-    display: block;
-  }
+.twobut {
+  display: none;
 }
 
-@media screen and (min-width: 768px) {
-  .cont {
-    display: flex;
-    margin-top: 60px;
-    font-size: 13px;
-  }
-  .product {
-    display: block;
-    width: 241px;
-    font-size: 13px;
-  }
-  .gram {
-    display: block;
-    width: 104px;
-    font-size: 13px;
-  }
+@media screen and (min-width: 767px) {
   .form {
     display: flex;
+    flex-direction: unset;
   }
-  .bu {
+  .but {
     display: none;
+    width: 50px;
+    height: 50px;
+    color: #fff;
+    margin-left: 48px;
+    margin: 0 auto;
+    border-radius: 50%;
+    background: #fc842d;
+    box-shadow: 0 4px 10px 0 rgb(252 132 45 / 50%);
+    border: 1px solid #fc842d;
+  }
+  .product {
+    width: 242px;
+  }
+  .gram {
+    width: 104px;
+  }
+  .but {
+    margin-left: 48px;
+  }
+  .twobut {
+    width: 50px;
+    height: 50px;
+    margin: 0 auto;
+    display: block;
+    border-radius: 50%;
+    background: #fc842d;
+    box-shadow: 0 4px 10px 0 rgb(252 132 45 / 50%);
+    border: 1px solid #fc842d;
   }
 }
 @media screen and (min-width: 1280px) {
-  .cont {
+  .but {
+    margin-left: 56px;
+    margin-right: 0px;
+  }
+  .twobut {
+    margin-left: 48px;
+  }
+  .bu {
+    width: 50px;
+    height: 50px;
+    color: #fff;
+    margin-top: 60px;
     margin-bottom: 60px;
-    margin-left: 115px;
+    border-radius: 50%;
+    background: #fc842d;
+    box-shadow: 0 4px 10px 0 rgb(252 132 45 / 50%);
+    border: 1px solid #fc842d;
+    margin-left: 135px;
   }
 }
-.bu {
-  width: 50px;
-  height: 50px;
-  color: #fff;
-  margin-top: 60px;
-  margin-bottom: 60px;
-  border-radius: 50%;
-  background: #fc842d;
-  box-shadow: 0 4px 10px 0 rgb(252 132 45 / 50%);
-  border: 1px solid #fc842d;
-  margin-left: 135px;
-} */
