@@ -1,5 +1,5 @@
 import { createReducer } from "@reduxjs/toolkit";
-import productAction, { fetchProductSuccess } from "../products/productAction";
+import * as productAction from "../products/productAction";
 import { getDailyRateSuccess } from "./dailyRateActions";
 import { logOutSuccess } from "../auth/authActions";
 
@@ -27,7 +27,7 @@ const itemsReducer = createReducer(dailyRateState, {
     ...state,
     summaries: [...state.summaries, payload.daySummary]
   }),
-  [fetchProductSuccess]: (state, { payload }) => ({
+  [productAction.fetchProductSuccess]: (state, { payload }) => ({
     ...state,
     summaries: [...state.summaries, payload.daySummary]
   }),

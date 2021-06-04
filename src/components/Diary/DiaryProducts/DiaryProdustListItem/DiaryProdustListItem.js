@@ -1,11 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
-import productOperation from "../../../../redux/products/productOperation";
+import * as productOperation from "../../../../redux/products/productOperation";
 import s from "../DiaryProdustListItem/DiaryProdustListItem.module.css";
 
 const DiaryProdustListItem = ({ title, weight, kcal, deleteProduct, id, day, date, dayId }) => {
   const calories = Math.round(kcal);
-
 
   return (
     <>

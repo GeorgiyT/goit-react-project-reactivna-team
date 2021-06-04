@@ -7,7 +7,6 @@ export const getUserOperation = () => async (dispatch, getState) => {
   try {
     const { data } = await axiosInstance.get("/user");
     dispatch(getUserSuccess(data));
-    console.log(data);
   } catch (error) {
     dispatch(getUserError(error));
   }

@@ -3,27 +3,30 @@ import { useSelector } from "react-redux";
 import CalorieForm from "../../components/DailyRateForm/CalorieForm";
 import Modal from "../../components/Modal/Modal";
 import loader from "../../redux/loader/loaderSelectors";
-import { IsLoader } from '../../components/Loader/IsLoader'
+import { IsLoader } from "../../components/Loader/IsLoader";
 import DailyRateModal from "../../components/DailyRateForm/DailyRateModal";
 
 export default function MainPages() {
-const [showModal, setShowModal] = useState(false);
- const isLoding = useSelector(loader)
+  const [showModal, setShowModal] = useState(false);
+  const isLoding = useSelector(loader);
+
   const toggleModal = () => {
-    setShowModal((prevState) => !prevState.showModal);
+    setShowModal(prevState => !prevState.showModal);
   };
 
   const modalClose = () => {
     setShowModal(false);
   };
   return (
-
     <div className="container">
-      <CalorieForm openModal={toggleModal}/>
+      <CalorieForm openModal={toggleModal} />
       <Modal onModalToggle={modalClose} showModal={showModal}>
-        <DailyRateModal/>
-        </Modal >
-      {isLoding && <IsLoader/>}
-      </div>
+        <DailyRateModal />
+      </Modal>
+      <Modal onModalToggle={modalClose} showModal={showModal}>
+        <DailyRateModal />
+      </Modal>
+      {isLoding && <IsLoader />}
+    </div>
   );
 }
